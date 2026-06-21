@@ -10,30 +10,20 @@ from dur_e_dast import ts
 
 # score
 
-score = library.dur_e_dast_score([(1, 4) for _ in range(0, 12)])
+score = library.dur_e_dast_score([(1, 4) for _ in range(0, 30)])
 
 # music
 
 trinton.make_music(
-    lambda _: trinton.select_target(_, (1, 12)),
-    evans.RhythmHandler(evans.talea([1], 16)),
+    lambda _: trinton.select_target(_, (1, 30)),
+    evans.RhythmHandler(
+        evans.tuplet([(1, 1, 1), (1, 1, 1, 1), (1, 1, 1, 1, 1), (1, 1, 1)])
+    ),
     voice=score["percussion 1 voice"],
+    # preprocessor=trinton.fuse_preprocessor((5, 4, 3, 1))
 )
 
 # globals
-
-# final barline
-
-# trinton.make_music(
-#     lambda _: trinton.select_target(_, (7,)),
-#     trinton.attachment_command(
-#         attachments=[
-#             abjad.BarLine("||", site="after"),
-#         ],
-#         selector=trinton.select_leaves_by_index([-1]),
-#     ),
-#     voice=score["Global Context"],
-# )
 
 # fermate
 
@@ -193,7 +183,7 @@ trinton.make_music(
 # barlines
 
 trinton.make_music(
-    lambda _: trinton.select_target(_, (12,)),
+    lambda _: trinton.select_target(_, (30,)),
     trinton.attachment_command(
         attachments=[
             abjad.LilyPondLiteral(
@@ -208,53 +198,10 @@ trinton.make_music(
 
 # beautification
 
-trinton.remove_redundant_time_signatures(score=score)
-
-# trinton.make_music(
-#     lambda _: trinton.select_target(_, (5,)),
-#     trinton.detach_command(
-#         detachments=[abjad.LilyPondLiteral], selector=abjad.select.leaves
-#     ),
-#     voice=score["Global Context"],
-# )
-
 # breaking
-#
-# for measure in [
-#     7,
-# ]:
-#     trinton.make_music(
-#         lambda _: trinton.select_target(_, (measure,)),
-#         trinton.attachment_command(
-#             attachments=[abjad.LilyPondLiteral(r"\pageBreak", site="absolute_after")],
-#             selector=trinton.select_leaves_by_index([0]),
-#             tag=abjad.Tag("+SCORE"),
-#         ),
-#         voice=score["Global Context"],
-#     )
-#
-# for measure in [1, 2, 4, 5, 6]:
-#     trinton.make_music(
-#         lambda _: trinton.select_target(_, (measure,)),
-#         trinton.attachment_command(
-#             attachments=[abjad.LilyPondLiteral(r"\noBreak", site="absolute_after")],
-#             selector=trinton.select_leaves_by_index([0]),
-#             tag=abjad.Tag("+SCORE"),
-#         ),
-#         voice=score["Global Context"],
-#     )
-#
-# for measure in [3]:
-#     trinton.make_music(
-#         lambda _: trinton.select_target(_, (measure,)),
-#         trinton.attachment_command(
-#             attachments=[abjad.LilyPondLiteral(r"\break", site="absolute_after")],
-#             selector=trinton.select_leaves_by_index([0]),
-#             tag=abjad.Tag("+SCORE"),
-#         ),
-#         voice=score["Global Context"],
-#     )
-#
+
+library.break_systems(score=score, global_context="Global Context")
+
 # # spacing
 #
 # trinton.make_music(
@@ -289,37 +236,6 @@ trinton.remove_redundant_time_signatures(score=score)
 #         selector=trinton.select_leaves_by_index([0]),
 #         tag=abjad.Tag("+SCORE"),
 #         direction=abjad.UP,
-#     ),
-#     voice=score["Global Context"],
-# )
-
-# whiteouts
-
-# trinton.whiteout_empty_staves(
-#     score=score,
-#     voice_names=["cello 1 voice", "guitar 1 voice"],
-#     cutaway="blank",
-#     tag=abjad.Tag("+SCORE"),
-#     last_segment=False,
-# )
-
-# trinton.whiteout_empty_staves(
-#     score=score,
-#     voice_names=["cello 2 voice"],
-#     cutaway=False,
-#     tag=abjad.Tag("+SCORE"),
-#     last_segment=False,
-# )
-
-# trinton.make_music(
-#     lambda _: trinton.select_target(_, (11,)),
-#     trinton.attachment_command(
-#         attachments=[
-#             abjad.LilyPondLiteral(
-#                 r"\once \override BarNumber.Y-offset = #5", site="before"
-#             )
-#         ],
-#         selector=trinton.select_leaves_by_index([0]),
 #     ),
 #     voice=score["Global Context"],
 # )

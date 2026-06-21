@@ -18,39 +18,94 @@
         {
             \time 1/4
             s1 * 1/4
-            \once \override Score.TimeSignature.stencil = ##f
+            \noBreak
             \time 1/4
             s1 * 1/4
-            \once \override Score.TimeSignature.stencil = ##f
+            \noBreak
             \time 1/4
             s1 * 1/4
-            \once \override Score.TimeSignature.stencil = ##f
+            \noBreak
             \time 1/4
             s1 * 1/4
-            \once \override Score.TimeSignature.stencil = ##f
+            \noBreak
             \time 1/4
             s1 * 1/4
-            \once \override Score.TimeSignature.stencil = ##f
+            \noBreak
             \time 1/4
             s1 * 1/4
-            \once \override Score.TimeSignature.stencil = ##f
+            \noBreak
             \time 1/4
             s1 * 1/4
-            \once \override Score.TimeSignature.stencil = ##f
+            \noBreak
             \time 1/4
             s1 * 1/4
-            \once \override Score.TimeSignature.stencil = ##f
+            \noBreak
             \time 1/4
             s1 * 1/4
-            \once \override Score.TimeSignature.stencil = ##f
+            \noBreak
             \time 1/4
             s1 * 1/4
-            \once \override Score.TimeSignature.stencil = ##f
+            \break
             \time 1/4
             s1 * 1/4
-            \once \override Score.TimeSignature.stencil = ##f
+            \noBreak
             \time 1/4
             s1 * 1/4
+            \noBreak
+            \time 1/4
+            s1 * 1/4
+            \noBreak
+            \time 1/4
+            s1 * 1/4
+            \noBreak
+            \time 1/4
+            s1 * 1/4
+            \noBreak
+            \time 1/4
+            s1 * 1/4
+            \noBreak
+            \time 1/4
+            s1 * 1/4
+            \noBreak
+            \time 1/4
+            s1 * 1/4
+            \noBreak
+            \time 1/4
+            s1 * 1/4
+            \noBreak
+            \time 1/4
+            s1 * 1/4
+            \break
+            \time 1/4
+            s1 * 1/4
+            \noBreak
+            \time 1/4
+            s1 * 1/4
+            \noBreak
+            \time 1/4
+            s1 * 1/4
+            \noBreak
+            \time 1/4
+            s1 * 1/4
+            \noBreak
+            \time 1/4
+            s1 * 1/4
+            \noBreak
+            \time 1/4
+            s1 * 1/4
+            \noBreak
+            \time 1/4
+            s1 * 1/4
+            \noBreak
+            \time 1/4
+            s1 * 1/4
+            \noBreak
+            \time 1/4
+            s1 * 1/4
+            \noBreak
+            \time 1/4
+            s1 * 1/4
+            \break
             \once \override Staff.BarLine.glyph-name = "||" 
         }
         \context StaffGroup = "Staff Group"
@@ -61,50 +116,180 @@
                 {
                     \context Voice = "percussion 1 voice"
                     {
+                        \times 2/3
+                        {
+                            c'8
+                            c'8
+                            c'8
+                        }
                         c'16
                         c'16
                         c'16
                         c'16
+                        \times 4/5
+                        {
+                            c'16
+                            c'16
+                            c'16
+                            c'16
+                            c'16
+                        }
+                        \times 2/3
+                        {
+                            c'8
+                            c'8
+                            c'8
+                        }
+                        \times 2/3
+                        {
+                            c'8
+                            c'8
+                            c'8
+                        }
                         c'16
                         c'16
                         c'16
                         c'16
+                        \times 4/5
+                        {
+                            c'16
+                            c'16
+                            c'16
+                            c'16
+                            c'16
+                        }
+                        \times 2/3
+                        {
+                            c'8
+                            c'8
+                            c'8
+                        }
+                        \times 2/3
+                        {
+                            c'8
+                            c'8
+                            c'8
+                        }
                         c'16
                         c'16
                         c'16
                         c'16
+                        \times 4/5
+                        {
+                            c'16
+                            c'16
+                            c'16
+                            c'16
+                            c'16
+                        }
+                        \times 2/3
+                        {
+                            c'8
+                            c'8
+                            c'8
+                        }
+                        \times 2/3
+                        {
+                            c'8
+                            c'8
+                            c'8
+                        }
                         c'16
                         c'16
                         c'16
                         c'16
+                        \times 4/5
+                        {
+                            c'16
+                            c'16
+                            c'16
+                            c'16
+                            c'16
+                        }
+                        \times 2/3
+                        {
+                            c'8
+                            c'8
+                            c'8
+                        }
+                        \times 2/3
+                        {
+                            c'8
+                            c'8
+                            c'8
+                        }
                         c'16
                         c'16
                         c'16
                         c'16
+                        \times 4/5
+                        {
+                            c'16
+                            c'16
+                            c'16
+                            c'16
+                            c'16
+                        }
+                        \times 2/3
+                        {
+                            c'8
+                            c'8
+                            c'8
+                        }
+                        \times 2/3
+                        {
+                            c'8
+                            c'8
+                            c'8
+                        }
                         c'16
                         c'16
                         c'16
                         c'16
+                        \times 4/5
+                        {
+                            c'16
+                            c'16
+                            c'16
+                            c'16
+                            c'16
+                        }
+                        \times 2/3
+                        {
+                            c'8
+                            c'8
+                            c'8
+                        }
+                        \times 2/3
+                        {
+                            c'8
+                            c'8
+                            c'8
+                        }
                         c'16
                         c'16
                         c'16
                         c'16
-                        c'16
-                        c'16
-                        c'16
-                        c'16
-                        c'16
-                        c'16
-                        c'16
-                        c'16
-                        c'16
-                        c'16
-                        c'16
-                        c'16
-                        c'16
-                        c'16
-                        c'16
-                        c'16
+                        \times 4/5
+                        {
+                            c'16
+                            c'16
+                            c'16
+                            c'16
+                            c'16
+                        }
+                        \times 2/3
+                        {
+                            c'8
+                            c'8
+                            c'8
+                        }
+                        \times 2/3
+                        {
+                            c'8
+                            c'8
+                            c'8
+                        }
                         c'16
                         c'16
                         c'16
@@ -115,6 +300,24 @@
                 {
                     \context Voice = "percussion 2 voice"
                     {
+                        s1 * 1/4
+                        s1 * 1/4
+                        s1 * 1/4
+                        s1 * 1/4
+                        s1 * 1/4
+                        s1 * 1/4
+                        s1 * 1/4
+                        s1 * 1/4
+                        s1 * 1/4
+                        s1 * 1/4
+                        s1 * 1/4
+                        s1 * 1/4
+                        s1 * 1/4
+                        s1 * 1/4
+                        s1 * 1/4
+                        s1 * 1/4
+                        s1 * 1/4
+                        s1 * 1/4
                         s1 * 1/4
                         s1 * 1/4
                         s1 * 1/4

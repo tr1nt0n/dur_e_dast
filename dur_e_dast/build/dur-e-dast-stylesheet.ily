@@ -39,10 +39,10 @@ afterGraceFraction = #(cons 15 16)
 		\consists Text_spanner_engraver
         \override BarNumber.stencil = #(make-stencil-circler 0.1 0.75 ly:text-interface::print)
         \override BarNumber.Y-extent = ##f
-        \override BarNumber.Y-offset = -3
+        \override BarNumber.Y-offset = 7
         \override BarNumber.X-extent = ##f
-        \override BarNumber.X-offset = -6.5
-        \override BarNumber.font-size = 2
+        \override BarNumber.X-offset = 0
+        \override BarNumber.font-size = 1
         \override BarNumber.padding = 1
         \override BarNumber.font-name = "Bodoni72 Book"
         \override MetronomeMark.stencil = ##f
@@ -92,11 +92,12 @@ afterGraceFraction = #(cons 15 16)
         \override Script.whiteout-style = #'outline
         \override Script.whiteout = 1
 
-        \override BarLine.hair-thickness = 1
+        \override BarLine.hair-thickness = 1.5
         \override BarLine.thick-thickness = #10
         \override BarLine.layer = 2
         \override BarLine.glyph-name = "!"
-        \override BarLine.bar-extent = #'(-2 . 2)
+        \override BarLine.bar-extent = #'(-3 . 3)
+        \override BarLine.extra-offset = #'(1.55 . 0)
 
         autoBeaming = ##f
         % \override Beam.breakable = ##t
@@ -145,6 +146,9 @@ afterGraceFraction = #(cons 15 16)
 
         \override MetronomeMark.stencil = ##f
 
+        \override NoteHead.style = #'la
+        \override NoteHead.duration-log = 2
+
         \override NoteCollision.merge-differently-dotted = ##t
         \override NoteCollision.merge-differently-headed = ##t
 
@@ -155,6 +159,9 @@ afterGraceFraction = #(cons 15 16)
         \override Parentheses.font-size = #1
 
         \override PianoPedalBracket.shorten-pair = #'(0 . -4)
+
+        \override SpacingSpanner.strict-note-spacing = ##t
+        \override SpacingSpanner.uniform-stretching = ##t
 
         \override Staff.thickness = #0.5
 
@@ -195,29 +202,8 @@ afterGraceFraction = #(cons 15 16)
 
         \override TrillPitchAccidental.avoid-slur = #'ignore
 
-        tupletFullLength = ##t
-        \override TupletBracket.full-length-to-extent = ##f
-        \override TupletBracket.padding = 2
-        \override TupletNumber.font-size = 2.5
-        \override TupletBracket.bracket-visibility = ##t
-        \override TupletBracket.layer = 2
-        \override TupletBracket.whiteout-style = #'outline
-        \override TupletBracket.whiteout = 1
-        \override TupletNumber.layer = 3
-        \override TupletNumber.whiteout-style = #'outline
-        \override TupletNumber.whiteout = 1
-        \override TupletNumber.text = #tuplet-number::calc-fraction-text
-        \override TupletNumber.font-name = "Bodoni72 Book Italic"
-        % \override TupletBracket.stencil =
-        %     #(lambda (grob)
-        %        (let* ((pos (ly:grob-property grob 'positions))
-        %               (dir (ly:grob-property grob 'direction))
-        %               (new-pos (if (= dir 1)
-        %                            (max (car pos)(cdr pos))
-        %                            (min (car pos)(cdr pos)))))
-        %          (ly:grob-set-property! grob 'positions (cons new-pos new-pos))
-        %          (ly:tuplet-bracket::print grob)))
-        % \override TupletBracket.direction = #UP
+        \override TupletBracket.stencil = ##f
+        \override TupletNumber.stencil = ##f
 
         \override VoltaBracketSpanner.padding = 8
     }
@@ -233,6 +219,8 @@ afterGraceFraction = #(cons 15 16)
 
         % \override Accidental.X-extent = ##f
 
+        \clef percussion
+
         \override AccidentalSuggestion.direction = #UP
         \override AccidentalSuggestion.font-size = 0.2
         \override AccidentalSuggestion.whiteout-style = #'outline
@@ -247,6 +235,9 @@ afterGraceFraction = #(cons 15 16)
         \override DurationLine.breakable = ##t
 
         \override InstrumentName.self-alignment-X = #CENTER
+
+        \override StaffSymbol.width = #190.7
+        \override StaffSymbol.line-count = #6
 
         % \override TimeSignature.font-size = 1
         % \override TimeSignature.whiteout-style = #'outline
@@ -298,11 +289,11 @@ afterGraceFraction = #(cons 15 16)
 	        #:brace "haydn"
 	))
     min-systems-per-page = 1
-    max-systems-per-page = 3
+    % max-systems-per-page = 3
     system-separator-markup = \markup \fontsize #12 { \tremolo-moderato }
     system-system-spacing = #'((basic-distance . 30) (minimum-distance . 30) (padding . 0) (stretchability . 30))
-    indent = 25\mm
-    short-indent = 15\mm
+    indent = 5\mm
+    short-indent = 5\mm
     bottom-margin = 10\mm
     left-margin = 10\mm
     right-margin = 10\mm
