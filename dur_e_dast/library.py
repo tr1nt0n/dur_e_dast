@@ -29,9 +29,10 @@ def dur_e_dast_score(time_signatures):
 # beautification
 
 
-def break_systems(score, global_context):
+def break_systems(score, global_context, i_offset=0):
     measures = abjad.select.leaves(score[global_context])
     for i, measure in zip(list(range(1, len(measures) + 1)), measures):
+        i = i + i_offset
         if i % 10 == 0 and i != 0:
             abjad.attach(
                 abjad.LilyPondLiteral(r"\break", site="absolute_after"), measure

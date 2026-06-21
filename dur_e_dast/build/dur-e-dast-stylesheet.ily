@@ -37,6 +37,7 @@ afterGraceFraction = #(cons 15 16)
         \consists Multi_measure_rest_engraver
 		\consists Text_engraver
 		\consists Text_spanner_engraver
+
         \override BarNumber.stencil = #(make-stencil-circler 0.1 0.75 ly:text-interface::print)
         \override BarNumber.Y-extent = ##f
         \override BarNumber.Y-offset = 7
@@ -45,6 +46,8 @@ afterGraceFraction = #(cons 15 16)
         \override BarNumber.font-size = 1
         \override BarNumber.padding = 1
         \override BarNumber.font-name = "Bodoni72 Book"
+        \override BarNumber.break-visibility = #end-of-line-invisible
+
         \override MetronomeMark.stencil = ##f
         \override VerticalAxisGroup.staff-staff-spacing = #'((basic-distance . 0) (minimum-distance . 0) (padding . 0) (stretchability . 0))
         % \override TimeSignature.transparent = ##t
@@ -140,9 +143,11 @@ afterGraceFraction = #(cons 15 16)
 
         \override MeasureSpanner.direction = #UP
         \override MeasureSpanner.thickness = #1.5
-        \override MeasureSpanner.font-size = 7
+        \override MeasureSpanner.font-size = 2
         \override MeasureSpanner.font-name = "Bodoni72 Book"
         \override MeasureSpanner.padding = 4
+        \override MeasureSpanner.X-extent = ##f
+        \override MeasureSpanner.shorten-pair = #'(1.54 . -1.56)
 
         \override MetronomeMark.stencil = ##f
 
@@ -164,6 +169,9 @@ afterGraceFraction = #(cons 15 16)
         \override SpacingSpanner.uniform-stretching = ##t
 
         \override Staff.thickness = #0.5
+
+        \override StaffSymbol.width = #190.7
+        \override StaffSymbol.line-count = #6
 
         \override Stem.stencil = ##f
 
@@ -236,9 +244,6 @@ afterGraceFraction = #(cons 15 16)
 
         \override InstrumentName.self-alignment-X = #CENTER
 
-        \override StaffSymbol.width = #190.7
-        \override StaffSymbol.line-count = #6
-
         % \override TimeSignature.font-size = 1
         % \override TimeSignature.whiteout-style = #'outline
         % \override TimeSignature.whiteout = 1
@@ -276,8 +281,6 @@ afterGraceFraction = #(cons 15 16)
         \consists Measure_spanner_engraver
 
         \override Accidental.font-size = 2
-
-        \override MeasureSpanner.staff-padding = 7
     }
 
 }
