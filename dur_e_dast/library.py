@@ -41,3 +41,71 @@ def break_systems(score, global_context, i_offset=0):
             abjad.attach(
                 abjad.LilyPondLiteral(r"\noBreak", site="absolute_after"), measure
             )
+
+
+# structure
+
+
+def illustrate_structure(score, voice_names, line_groups, material_sequence):
+    primary_voice_name = voice_names[0]
+    secondary_voice_name = voice_names[-1]
+
+    measure_counter = 1
+
+    _material_index_to_color = {
+        0: "\一",
+        1: "\二",
+        2: "\三",
+    }
+
+    for line_group, material in zip(line_groups, material_sequence):
+        first_measure = measure_counter
+        last_measure = measure_counter + line_group
+        last_measure = last_measure - 1
+
+        primary_voice_material = material[0]
+
+        primary_voice_color = _material_index_to_color[primary_voice_material]
+
+        trinton.make_music(
+            lambda _: trinton.select_target(_, (first_measure, last_measure)),
+            trinton.linear_attachment_command(
+                attachments=[
+                    abjad.LilyPondLiteral(
+                        rf"""\staffHighlight {primary_voice_color} """,
+                        site="before",
+                    ),
+                    abjad.LilyPondLiteral(
+                        r"\stopStaffHighlight", site="absolute_after"
+                    ),
+                ],
+                selector=trinton.select_leaves_by_index([0, -1]),
+            ),
+            voice=score[primary_voice_name],
+        )
+
+        if len(material) > 1:
+            secondary_voice_material = material[-1]
+
+            secondary_voice_color = _material_index_to_color[secondary_voice_material]
+
+            trinton.make_music(
+                lambda _: trinton.select_target(_, (first_measure, last_measure)),
+                evans.RhythmHandler(evans.talea([100], 4)),
+                trinton.transparent_noteheads(selector=trinton.pleaves()),
+                trinton.linear_attachment_command(
+                    attachments=[
+                        abjad.LilyPondLiteral(
+                            rf"""\staffHighlight {secondary_voice_color} """,
+                            site="before",
+                        ),
+                        abjad.LilyPondLiteral(
+                            r"\stopStaffHighlight", site="absolute_after"
+                        ),
+                    ],
+                    selector=trinton.select_leaves_by_index([0, -1]),
+                ),
+                voice=score[secondary_voice_name],
+            )
+
+        measure_counter += line_group

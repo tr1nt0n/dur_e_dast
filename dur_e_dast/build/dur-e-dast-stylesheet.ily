@@ -102,6 +102,8 @@ afterGraceFraction = #(cons 15 16)
         \override BarLine.bar-extent = #'(-3 . 3)
         \override BarLine.extra-offset = #'(1.55 . 0)
 
+        \override SpanBar.extra-offset = #'(1.55 . 0)
+
         autoBeaming = ##f
         % \override Beam.breakable = ##t
         % \override Beam.damping = 2
@@ -196,9 +198,10 @@ afterGraceFraction = #(cons 15 16)
         \override TextScript.whiteout = 1
         \override TextSpanner.font-name = "Bodoni72 Book"
 
-        \override Tie.stencil = #flare-tie
-        \override Tie.height-limit = 6
-        \override Tie.thickness = 1.5
+        \override Tie.stencil = ##f
+        % \override Tie.stencil = #flare-tie
+        % \override Tie.height-limit = 6
+        % \override Tie.thickness = 1.5
 
         \override TrillSpanner.bound-details.right.padding = #-3
 

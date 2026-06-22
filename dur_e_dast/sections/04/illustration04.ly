@@ -16,7 +16,7 @@
     <<
         \context TimeSignatureContext = "Global Context"
         {
-            \tweak text " 3\" " \startMeasureSpanner
+            \tweak text " 3 " \startMeasureSpanner
             \time 1/4
             s1 * 1/4
             \noBreak
@@ -27,7 +27,7 @@
             s1 * 1/4
             \noBreak
             \stopMeasureSpanner
-            \tweak text " 4\" " \startMeasureSpanner
+            \tweak text " 4 " \startMeasureSpanner
             \time 1/4
             s1 * 1/4
             \noBreak
@@ -41,7 +41,7 @@
             s1 * 1/4
             \noBreak
             \stopMeasureSpanner
-            \tweak text " 4\" " \startMeasureSpanner
+            \tweak text " 4 " \startMeasureSpanner
             \time 1/4
             s1 * 1/4
             \noBreak
@@ -55,7 +55,7 @@
             s1 * 1/4
             \noBreak
             \stopMeasureSpanner
-            \tweak text " 3\" " \startMeasureSpanner
+            \tweak text " 3 " \startMeasureSpanner
             \time 1/4
             s1 * 1/4
             \noBreak
@@ -86,6 +86,7 @@
                 {
                     \context Voice = "percussion 1 voice"
                     {
+                        \staffHighlight \二 
                         s1 * 1/4
                         s1 * 1/4
                         s1 * 1/4
@@ -100,28 +101,88 @@
                         s1 * 1/4
                         s1 * 1/4
                         s1 * 1/4
+                        \stopStaffHighlight
                         s1 * 1/4
+                        \once \override Staff.BarLine.glyph-name = "||" 
                     }
                 }
                 \context disappearingStaff = "percussion 2 staff"
                 {
                     \context Voice = "percussion 2 voice"
                     {
+                        \once \override Accidental.stencil = ##f
+                        \once \override NoteHead.no-ledgers = ##t
+                        \staffHighlight \一 
+                        \once \override NoteHead.transparent = ##t
+                        c'4
+                        ~
+                        \once \override Accidental.stencil = ##f
+                        \once \override NoteHead.no-ledgers = ##t
+                        \once \override NoteHead.transparent = ##t
+                        c'4
+                        ~
+                        \once \override Accidental.stencil = ##f
+                        \once \override NoteHead.no-ledgers = ##t
+                        \once \override NoteHead.transparent = ##t
+                        c'4
+                        ~
+                        \once \override Accidental.stencil = ##f
+                        \once \override NoteHead.no-ledgers = ##t
+                        \once \override NoteHead.transparent = ##t
+                        c'4
+                        ~
+                        \once \override Accidental.stencil = ##f
+                        \once \override NoteHead.no-ledgers = ##t
+                        \once \override NoteHead.transparent = ##t
+                        c'4
+                        ~
+                        \once \override Accidental.stencil = ##f
+                        \once \override NoteHead.no-ledgers = ##t
+                        \once \override NoteHead.transparent = ##t
+                        c'4
+                        ~
+                        \once \override Accidental.stencil = ##f
+                        \once \override NoteHead.no-ledgers = ##t
+                        \once \override NoteHead.transparent = ##t
+                        c'4
+                        ~
+                        \once \override Accidental.stencil = ##f
+                        \once \override NoteHead.no-ledgers = ##t
+                        \once \override NoteHead.transparent = ##t
+                        c'4
+                        ~
+                        \once \override Accidental.stencil = ##f
+                        \once \override NoteHead.no-ledgers = ##t
+                        \once \override NoteHead.transparent = ##t
+                        c'4
+                        ~
+                        \once \override Accidental.stencil = ##f
+                        \once \override NoteHead.no-ledgers = ##t
+                        \once \override NoteHead.transparent = ##t
+                        c'4
+                        ~
+                        \once \override Accidental.stencil = ##f
+                        \once \override NoteHead.no-ledgers = ##t
+                        \once \override NoteHead.transparent = ##t
+                        c'4
+                        ~
+                        \once \override Accidental.stencil = ##f
+                        \once \override NoteHead.no-ledgers = ##t
+                        \once \override NoteHead.transparent = ##t
+                        c'4
+                        ~
+                        \once \override Accidental.stencil = ##f
+                        \once \override NoteHead.no-ledgers = ##t
+                        \once \override NoteHead.transparent = ##t
+                        c'4
+                        ~
+                        \once \override Accidental.stencil = ##f
+                        \once \override NoteHead.no-ledgers = ##t
+                        \once \override NoteHead.transparent = ##t
+                        c'4
+                        \stopStaffHighlight
                         s1 * 1/4
-                        s1 * 1/4
-                        s1 * 1/4
-                        s1 * 1/4
-                        s1 * 1/4
-                        s1 * 1/4
-                        s1 * 1/4
-                        s1 * 1/4
-                        s1 * 1/4
-                        s1 * 1/4
-                        s1 * 1/4
-                        s1 * 1/4
-                        s1 * 1/4
-                        s1 * 1/4
-                        s1 * 1/4
+                        \once \override Staff.BarLine.glyph-name = "||" 
                     }
                 }
             >>

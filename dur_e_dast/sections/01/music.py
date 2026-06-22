@@ -5,6 +5,7 @@ import evans
 import trinton
 import itertools
 from dur_e_dast import library
+from dur_e_dast import material_sequence
 from dur_e_dast import rhythm
 from dur_e_dast import ts
 
@@ -14,6 +15,15 @@ score = library.dur_e_dast_score([(1, 4) for _ in range(0, 30)])
 
 ts.write_groupings(
     score=score, global_context="Global Context", groupings=ts.section_1_groupings
+)
+
+# structure
+
+library.illustrate_structure(
+    score=score,
+    voice_names=["percussion 1 voice", "percussion 2 voice"],
+    line_groups=material_sequence.line_groupings[0],
+    material_sequence=material_sequence.material_sequence[0:2],
 )
 
 # music
@@ -186,21 +196,22 @@ trinton.fermata_measures(
 
 # barlines
 
-trinton.make_music(
-    lambda _: trinton.select_target(_, (30,)),
-    trinton.attachment_command(
-        attachments=[
-            abjad.LilyPondLiteral(
-                [
-                    r"""\once \override Staff.BarLine.glyph-name = "||" """,
-                ],
-                site="absolute_after",
-            )
-        ],
-        selector=trinton.select_leaves_by_index([0]),
-    ),
-    voice=score["Global Context"],
-)
+for voice_name in ["Global Context", "percussion 1 voice", "percussion 2 voice"]:
+    trinton.make_music(
+        lambda _: trinton.select_target(_, (30,)),
+        trinton.attachment_command(
+            attachments=[
+                abjad.LilyPondLiteral(
+                    [
+                        r"""\once \override Staff.BarLine.glyph-name = "||" """,
+                    ],
+                    site="absolute_after",
+                )
+            ],
+            selector=trinton.select_leaves_by_index([0]),
+        ),
+        voice=score[voice_name],
+    )
 
 # beautification
 

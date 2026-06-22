@@ -14,6 +14,13 @@ section_2_groupings = [4, 9, 4, 4, 5, 3, 4, 2, 7, 3, 4, 3, 3, 3, 6, 3]
 section_3_groupings = [1, 1, 2, 1, 4, 4, 2, 3, 7, 3, 3]
 section_4_groupings = [3, 4, 4, 3]
 
+all_groupings = [
+    section_1_groupings,
+    section_2_groupings,
+    section_3_groupings,
+    section_4_groupings,
+]
+
 
 def write_groupings(score, global_context, groupings):
     measure_counter = 1
@@ -28,7 +35,7 @@ def write_groupings(score, global_context, groupings):
             trinton.linear_attachment_command(
                 attachments=[
                     abjad.LilyPondLiteral(
-                        rf'\tweak text " {grouping}\" " \startMeasureSpanner',
+                        rf'\tweak text " {grouping} " \startMeasureSpanner',
                         site="absolute_before",
                     ),
                     abjad.LilyPondLiteral(
