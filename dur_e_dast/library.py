@@ -43,6 +43,26 @@ def break_systems(score, global_context, i_offset=0):
             )
 
 
+def erase_ties(selector=trinton.logical_ties(pitched=True, grace=False)):
+    def erase(argument):
+        selections = selector(argument)
+        selections = abjad.select.logical_ties(selections, pitched=True, grace=False)
+
+        for selection in selections:
+            leaves = abjad.select.leaves(selection)
+
+            if len(leaves) > 1:
+                for leaf in leaves[1:]:
+                    abjad.attach(
+                        abjad.LilyPondLiteral(
+                            r"\once \override NoteHead.transparent = ##t", site="before"
+                        ),
+                        leaf,
+                    )
+
+    return erase
+
+
 # structure
 
 

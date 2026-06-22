@@ -28,14 +28,15 @@ library.illustrate_structure(
 
 # music
 
-# trinton.make_music(
-#     lambda _: trinton.select_target(_, (1, 30)),
-#     evans.RhythmHandler(
-#         evans.tuplet([(1, 1, 1), (1, 1, 1, 1), (1, 1, 1, 1, 1), (1, 1, 1)])
-#     ),
-#     voice=score["percussion 1 voice"],
-#     # preprocessor=trinton.fuse_preprocessor((5, 4, 3, 1))
-# )
+trinton.make_music(
+    lambda _: trinton.select_target(_, (1, 23)),
+    evans.RhythmHandler(rhythm.rhythm_a(index=0)),
+    evans.PitchHandler(["b"]),
+    library.erase_ties(),
+    trinton.duration_line(selector=trinton.logical_ties(pitched=True, grace=False)),
+    voice=score["percussion 1 voice"],
+    preprocessor=trinton.fuse_preprocessor((2, 3, 3, 2, 11, 2)),
+)
 
 # globals
 

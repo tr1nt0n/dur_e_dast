@@ -134,7 +134,7 @@ afterGraceFraction = #(cons 15 16)
 
         \override Flag.stencil = ##f
 
-        \override Glissando.thickness = #4
+        \override Glissando.thickness = #9.5
         \override Glissando.breakable = ##t
 
         \override Hairpin.to-barline = ##f
@@ -246,6 +246,8 @@ afterGraceFraction = #(cons 15 16)
         \override DurationLine.breakable = ##t
 
         \override InstrumentName.self-alignment-X = #CENTER
+
+        \override Rest.transparent = ##t
 
         % \override TimeSignature.font-size = 1
         % \override TimeSignature.whiteout-style = #'outline
