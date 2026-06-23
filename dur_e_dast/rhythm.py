@@ -124,6 +124,53 @@ def rhythm_a(index, invert=None, alpha=None, multiply=False):
     return return_rhythms
 
 
+def rhythm_b(
+    score,
+    voice_name,
+    measures,
+    index=0,
+    extra_voice="",
+    preprocessor=None,
+):
+    integer_sequence = abjad.sequence.flatten(ts.all_groupings)
+    integer_sequence = trinton.rotated_sequence(
+        integer_sequence, index % len(integer_sequence)
+    )
+
+    retrograde_integer_sequence = integer_sequence[::-1]
+    retrograde_integer_sequence = trinton.rotated_sequence(
+        retrograde_integer_sequence, index % len(retrograde_integer_sequence)
+    )
+
+    prograde_tuplet_ratios = []
+
+    for attack_amount in integer_sequence:
+        tuplet = [1 for _ in range(0, attack_amount)]
+        tuplet = tuple(tuplet)
+        prograde_tuplet_ratios.append(tuplet)
+
+    retrograde_tuplet_ratios = []
+
+    for attack_amount in retrograde_integer_sequence:
+        tuplet = [1 for _ in range(0, attack_amount)]
+        tuplet = tuple(tuplet)
+        retrograde_tuplet_ratios.append(tuplet)
+
+    trinton.make_music(
+        lambda _: trinton.select_target(_, measures),
+        evans.RhythmHandler(evans.tuplet(prograde_tuplet_ratios)),
+        trinton.IntermittentVoiceHandler(
+            evans.RhythmHandler(evans.tuplet(retrograde_tuplet_ratios)),
+            direction=abjad.DOWN,
+            voice_name=f"{voice_name} polyrhythm {extra_voice}",
+            temp_name=f"temp {extra_voice}",
+            preprocessor=preprocessor,
+        ),
+        voice=score[voice_name],
+        preprocessor=preprocessor,
+    )
+
+
 def rhythm_c(index, nesting_level=None, nesting_selector=None):
     def return_rhythms(durations):
         integer_sequence = abjad.sequence.flatten(ts.all_groupings)

@@ -28,23 +28,48 @@ library.illustrate_structure(
 
 # music
 
-trinton.make_music(
-    lambda _: trinton.select_target(_, (18, 42)),
-    evans.RhythmHandler(
-        rhythm.rhythm_c(
-            index=0,
-            nesting_level=1,
-            nesting_selector=trinton.patterned_tie_index_selector(
-                [1, 3, 4], 7, pitched=True, grace=False
-            ),
-        )
-    ),
-    evans.PitchHandler(["b"]),
-    library.erase_ties(),
-    # trinton.duration_line(selector=trinton.logical_ties(pitched=True, grace=False)),
-    voice=score["percussion 1 voice"],
-    preprocessor=trinton.fuse_preprocessor((9, 7, 9)),
-)
+# rhythm.rhythm_b(
+#     score=score,
+#     voice_name="percussion 1 voice",
+#     measures=(1, 17),
+#     index=3,
+#     extra_voice="1",
+#     preprocessor=trinton.fuse_quarters_preprocessor((4, 9, 4)),
+# )
+#
+# trinton.make_music(
+#     lambda _: trinton.select_target(_, (1, 17)),
+#     evans.PitchHandler(["f'"]),
+#     library.erase_ties(),
+#     trinton.duration_line(selector=trinton.logical_ties(pitched=True, grace=False)),
+#     voice=score["percussion 1 voice temp 1"]
+# )
+#
+# trinton.make_music(
+#     lambda _: trinton.select_target(_, (1, 17)),
+#     evans.PitchHandler(["g"]),
+#     library.erase_ties(),
+#     trinton.duration_line(selector=trinton.logical_ties(pitched=True, grace=False)),
+#     voice=score["percussion 1 voice polyrhythm 1"]
+# )
+#
+# trinton.make_music(
+#     lambda _: trinton.select_target(_, (18, 42)),
+#     evans.RhythmHandler(
+#         rhythm.rhythm_c(
+#             index=0,
+#             nesting_level=1,
+#             nesting_selector=trinton.patterned_tie_index_selector(
+#                 [1, 3, 4], 7, pitched=True, grace=False
+#             ),
+#         )
+#     ),
+#     evans.PitchHandler(["b"]),
+#     library.erase_ties(),
+#     # trinton.duration_line(selector=trinton.logical_ties(pitched=True, grace=False)),
+#     voice=score["percussion 1 voice"],
+#     preprocessor=trinton.fuse_preprocessor((9, 7, 9)),
+# )
 
 # globals
 
