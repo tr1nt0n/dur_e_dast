@@ -203,290 +203,12 @@
                             }
                         }
                         \tweak text #tuplet-number::calc-fraction-text
-                        \times 6/11
+                        \times 6/10
                         {
                             r4
                             \once \override Dots.staff-position = #2
                             \afterGrace
-                            b8
-                              %! abjad.glissando(7)
-                            - \abjad-zero-padding-glissando
-                              %! abjad.glissando(7)
-                            \glissando
-                            {
-                                \once \override Accidental.stencil = ##f
-                                \once \override Dots.staff-position = #2
-                                \once \override NoteHead.no-ledgers = ##t
-                                \once \override NoteHead.transparent = ##t
-                                  %! abjad.glissando(1)
-                                \hide NoteHead
-                                  %! abjad.glissando(1)
-                                \override Accidental.stencil = ##f
-                                  %! abjad.glissando(1)
-                                \override NoteColumn.glissando-skip = ##t
-                                  %! abjad.glissando(1)
-                                \override NoteHead.no-ledgers = ##t
-                                  %! abjad.glissando(6)
-                                \revert Accidental.stencil
-                                  %! abjad.glissando(6)
-                                \revert NoteColumn.glissando-skip
-                                  %! abjad.glissando(6)
-                                \revert NoteHead.no-ledgers
-                                  %! abjad.glissando(6)
-                                \undo \hide NoteHead
-                                b16
-                            }
-                            \once \override Dots.staff-position = #2
-                            \afterGrace
-                            b8
-                              %! abjad.glissando(7)
-                            - \abjad-zero-padding-glissando
-                              %! abjad.glissando(7)
-                            \glissando
-                            {
-                                \once \override Accidental.stencil = ##f
-                                \once \override Dots.staff-position = #2
-                                \once \override NoteHead.no-ledgers = ##t
-                                \once \override NoteHead.transparent = ##t
-                                  %! abjad.glissando(1)
-                                \hide NoteHead
-                                  %! abjad.glissando(1)
-                                \override Accidental.stencil = ##f
-                                  %! abjad.glissando(1)
-                                \override NoteColumn.glissando-skip = ##t
-                                  %! abjad.glissando(1)
-                                \override NoteHead.no-ledgers = ##t
-                                  %! abjad.glissando(6)
-                                \revert Accidental.stencil
-                                  %! abjad.glissando(6)
-                                \revert NoteColumn.glissando-skip
-                                  %! abjad.glissando(6)
-                                \revert NoteHead.no-ledgers
-                                  %! abjad.glissando(6)
-                                \undo \hide NoteHead
-                                b16
-                            }
-                            \once \override Dots.staff-position = #2
-                            \afterGrace
-                            b2.
-                              %! abjad.glissando(7)
-                            - \abjad-zero-padding-glissando
-                              %! abjad.glissando(7)
-                            \glissando
-                            {
-                                \once \override Accidental.stencil = ##f
-                                \once \override Dots.staff-position = #2
-                                \once \override NoteHead.no-ledgers = ##t
-                                \once \override NoteHead.transparent = ##t
-                                  %! abjad.glissando(1)
-                                \hide NoteHead
-                                  %! abjad.glissando(1)
-                                \override Accidental.stencil = ##f
-                                  %! abjad.glissando(1)
-                                \override NoteColumn.glissando-skip = ##t
-                                  %! abjad.glissando(1)
-                                \override NoteHead.no-ledgers = ##t
-                                  %! abjad.glissando(6)
-                                \revert Accidental.stencil
-                                  %! abjad.glissando(6)
-                                \revert NoteColumn.glissando-skip
-                                  %! abjad.glissando(6)
-                                \revert NoteHead.no-ledgers
-                                  %! abjad.glissando(6)
-                                \undo \hide NoteHead
-                                b16
-                            }
-                            \once \override Dots.staff-position = #2
-                            \afterGrace
-                            b8
-                              %! abjad.glissando(7)
-                            - \abjad-zero-padding-glissando
-                              %! abjad.glissando(7)
-                            \glissando
-                            {
-                                \once \override Accidental.stencil = ##f
-                                \once \override Dots.staff-position = #2
-                                \once \override NoteHead.no-ledgers = ##t
-                                \once \override NoteHead.transparent = ##t
-                                  %! abjad.glissando(1)
-                                \hide NoteHead
-                                  %! abjad.glissando(1)
-                                \override Accidental.stencil = ##f
-                                  %! abjad.glissando(1)
-                                \override NoteColumn.glissando-skip = ##t
-                                  %! abjad.glissando(1)
-                                \override NoteHead.no-ledgers = ##t
-                                  %! abjad.glissando(6)
-                                \revert Accidental.stencil
-                                  %! abjad.glissando(6)
-                                \revert NoteColumn.glissando-skip
-                                  %! abjad.glissando(6)
-                                \revert NoteHead.no-ledgers
-                                  %! abjad.glissando(6)
-                                \undo \hide NoteHead
-                                b16
-                            }
-                        }
-                        \times 2/3
-                        {
-                            r4
-                            \once \override Dots.staff-position = #2
-                            \afterGrace
-                            b8
-                              %! abjad.glissando(7)
-                            - \abjad-zero-padding-glissando
-                              %! abjad.glissando(7)
-                            \glissando
-                            {
-                                \once \override Accidental.stencil = ##f
-                                \once \override Dots.staff-position = #2
-                                \once \override NoteHead.no-ledgers = ##t
-                                \once \override NoteHead.transparent = ##t
-                                  %! abjad.glissando(1)
-                                \hide NoteHead
-                                  %! abjad.glissando(1)
-                                \override Accidental.stencil = ##f
-                                  %! abjad.glissando(1)
-                                \override NoteColumn.glissando-skip = ##t
-                                  %! abjad.glissando(1)
-                                \override NoteHead.no-ledgers = ##t
-                                  %! abjad.glissando(6)
-                                \revert Accidental.stencil
-                                  %! abjad.glissando(6)
-                                \revert NoteColumn.glissando-skip
-                                  %! abjad.glissando(6)
-                                \revert NoteHead.no-ledgers
-                                  %! abjad.glissando(6)
-                                \undo \hide NoteHead
-                                b16
-                            }
-                            \once \override Dots.staff-position = #2
-                            \afterGrace
-                            b8
-                              %! abjad.glissando(7)
-                            - \abjad-zero-padding-glissando
-                              %! abjad.glissando(7)
-                            \glissando
-                            {
-                                \once \override Accidental.stencil = ##f
-                                \once \override Dots.staff-position = #2
-                                \once \override NoteHead.no-ledgers = ##t
-                                \once \override NoteHead.transparent = ##t
-                                  %! abjad.glissando(1)
-                                \hide NoteHead
-                                  %! abjad.glissando(1)
-                                \override Accidental.stencil = ##f
-                                  %! abjad.glissando(1)
-                                \override NoteColumn.glissando-skip = ##t
-                                  %! abjad.glissando(1)
-                                \override NoteHead.no-ledgers = ##t
-                                  %! abjad.glissando(6)
-                                \revert Accidental.stencil
-                                  %! abjad.glissando(6)
-                                \revert NoteColumn.glissando-skip
-                                  %! abjad.glissando(6)
-                                \revert NoteHead.no-ledgers
-                                  %! abjad.glissando(6)
-                                \undo \hide NoteHead
-                                b16
-                            }
-                            \once \override Dots.staff-position = #2
-                            \afterGrace
-                            b2
-                              %! abjad.glissando(7)
-                            - \abjad-zero-padding-glissando
-                              %! abjad.glissando(7)
-                            \glissando
-                            {
-                                \once \override Accidental.stencil = ##f
-                                \once \override Dots.staff-position = #2
-                                \once \override NoteHead.no-ledgers = ##t
-                                \once \override NoteHead.transparent = ##t
-                                  %! abjad.glissando(1)
-                                \hide NoteHead
-                                  %! abjad.glissando(1)
-                                \override Accidental.stencil = ##f
-                                  %! abjad.glissando(1)
-                                \override NoteColumn.glissando-skip = ##t
-                                  %! abjad.glissando(1)
-                                \override NoteHead.no-ledgers = ##t
-                                  %! abjad.glissando(6)
-                                \revert Accidental.stencil
-                                  %! abjad.glissando(6)
-                                \revert NoteColumn.glissando-skip
-                                  %! abjad.glissando(6)
-                                \revert NoteHead.no-ledgers
-                                  %! abjad.glissando(6)
-                                \undo \hide NoteHead
-                                b16
-                            }
-                            \once \override Dots.staff-position = #2
-                            \afterGrace
-                            b8
-                              %! abjad.glissando(7)
-                            - \abjad-zero-padding-glissando
-                              %! abjad.glissando(7)
-                            \glissando
-                            {
-                                \once \override Accidental.stencil = ##f
-                                \once \override Dots.staff-position = #2
-                                \once \override NoteHead.no-ledgers = ##t
-                                \once \override NoteHead.transparent = ##t
-                                  %! abjad.glissando(1)
-                                \hide NoteHead
-                                  %! abjad.glissando(1)
-                                \override Accidental.stencil = ##f
-                                  %! abjad.glissando(1)
-                                \override NoteColumn.glissando-skip = ##t
-                                  %! abjad.glissando(1)
-                                \override NoteHead.no-ledgers = ##t
-                                  %! abjad.glissando(6)
-                                \revert Accidental.stencil
-                                  %! abjad.glissando(6)
-                                \revert NoteColumn.glissando-skip
-                                  %! abjad.glissando(6)
-                                \revert NoteHead.no-ledgers
-                                  %! abjad.glissando(6)
-                                \undo \hide NoteHead
-                                b16
-                            }
-                        }
-                        \times 4/7
-                        {
-                            r8
-                            \once \override Dots.staff-position = #2
-                            \afterGrace
-                            b4
-                              %! abjad.glissando(7)
-                            - \abjad-zero-padding-glissando
-                              %! abjad.glissando(7)
-                            \glissando
-                            {
-                                \once \override Accidental.stencil = ##f
-                                \once \override Dots.staff-position = #2
-                                \once \override NoteHead.no-ledgers = ##t
-                                \once \override NoteHead.transparent = ##t
-                                  %! abjad.glissando(1)
-                                \hide NoteHead
-                                  %! abjad.glissando(1)
-                                \override Accidental.stencil = ##f
-                                  %! abjad.glissando(1)
-                                \override NoteColumn.glissando-skip = ##t
-                                  %! abjad.glissando(1)
-                                \override NoteHead.no-ledgers = ##t
-                                  %! abjad.glissando(6)
-                                \revert Accidental.stencil
-                                  %! abjad.glissando(6)
-                                \revert NoteColumn.glissando-skip
-                                  %! abjad.glissando(6)
-                                \revert NoteHead.no-ledgers
-                                  %! abjad.glissando(6)
-                                \undo \hide NoteHead
-                                b16
-                            }
-                            \once \override Dots.staff-position = #2
-                            \afterGrace
-                            b4.
+                            b2..
                               %! abjad.glissando(7)
                             - \abjad-zero-padding-glissando
                               %! abjad.glissando(7)
@@ -546,72 +268,9 @@
                             }
                         }
                         \tweak text #tuplet-number::calc-fraction-text
-                        \times 11/12
+                        \times 1/1
                         {
-                            r1.
-                            \once \override Dots.staff-position = #2
-                            \afterGrace
-                            b2.
-                              %! abjad.glissando(7)
-                            - \abjad-zero-padding-glissando
-                              %! abjad.glissando(7)
-                            \glissando
-                            {
-                                \once \override Accidental.stencil = ##f
-                                \once \override Dots.staff-position = #2
-                                \once \override NoteHead.no-ledgers = ##t
-                                \once \override NoteHead.transparent = ##t
-                                  %! abjad.glissando(1)
-                                \hide NoteHead
-                                  %! abjad.glissando(1)
-                                \override Accidental.stencil = ##f
-                                  %! abjad.glissando(1)
-                                \override NoteColumn.glissando-skip = ##t
-                                  %! abjad.glissando(1)
-                                \override NoteHead.no-ledgers = ##t
-                                  %! abjad.glissando(6)
-                                \revert Accidental.stencil
-                                  %! abjad.glissando(6)
-                                \revert NoteColumn.glissando-skip
-                                  %! abjad.glissando(6)
-                                \revert NoteHead.no-ledgers
-                                  %! abjad.glissando(6)
-                                \undo \hide NoteHead
-                                b16
-                            }
-                            \once \override Dots.staff-position = #2
-                            \afterGrace
-                            b2.
-                              %! abjad.glissando(7)
-                            - \abjad-zero-padding-glissando
-                              %! abjad.glissando(7)
-                            \glissando
-                            {
-                                \once \override Accidental.stencil = ##f
-                                \once \override Dots.staff-position = #2
-                                \once \override NoteHead.no-ledgers = ##t
-                                \once \override NoteHead.transparent = ##t
-                                  %! abjad.glissando(1)
-                                \hide NoteHead
-                                  %! abjad.glissando(1)
-                                \override Accidental.stencil = ##f
-                                  %! abjad.glissando(1)
-                                \override NoteColumn.glissando-skip = ##t
-                                  %! abjad.glissando(1)
-                                \override NoteHead.no-ledgers = ##t
-                                  %! abjad.glissando(6)
-                                \revert Accidental.stencil
-                                  %! abjad.glissando(6)
-                                \revert NoteColumn.glissando-skip
-                                  %! abjad.glissando(6)
-                                \revert NoteHead.no-ledgers
-                                  %! abjad.glissando(6)
-                                \undo \hide NoteHead
-                                b16
-                            }
-                        }
-                        \times 2/3
-                        {
+                            r4
                             \once \override Dots.staff-position = #2
                             \afterGrace
                             b4
@@ -644,7 +303,41 @@
                             }
                             \once \override Dots.staff-position = #2
                             \afterGrace
-                            b4.
+                            b4
+                              %! abjad.glissando(7)
+                            - \abjad-zero-padding-glissando
+                              %! abjad.glissando(7)
+                            \glissando
+                            {
+                                \once \override Accidental.stencil = ##f
+                                \once \override Dots.staff-position = #2
+                                \once \override NoteHead.no-ledgers = ##t
+                                \once \override NoteHead.transparent = ##t
+                                  %! abjad.glissando(1)
+                                \hide NoteHead
+                                  %! abjad.glissando(1)
+                                \override Accidental.stencil = ##f
+                                  %! abjad.glissando(1)
+                                \override NoteColumn.glissando-skip = ##t
+                                  %! abjad.glissando(1)
+                                \override NoteHead.no-ledgers = ##t
+                                  %! abjad.glissando(6)
+                                \revert Accidental.stencil
+                                  %! abjad.glissando(6)
+                                \revert NoteColumn.glissando-skip
+                                  %! abjad.glissando(6)
+                                \revert NoteHead.no-ledgers
+                                  %! abjad.glissando(6)
+                                \undo \hide NoteHead
+                                b16
+                            }
+                        }
+                        \times 4/5
+                        {
+                            r8
+                            \once \override Dots.staff-position = #2
+                            \afterGrace
+                            b4..
                               %! abjad.glissando(7)
                             - \abjad-zero-padding-glissando
                               %! abjad.glissando(7)
@@ -674,7 +367,256 @@
                             }
                             \once \override Dots.staff-position = #2
                             \afterGrace
+                            b16
+                              %! abjad.glissando(7)
+                            - \abjad-zero-padding-glissando
+                              %! abjad.glissando(7)
+                            \glissando
+                            {
+                                \once \override Accidental.stencil = ##f
+                                \once \override Dots.staff-position = #2
+                                \once \override NoteHead.no-ledgers = ##t
+                                \once \override NoteHead.transparent = ##t
+                                  %! abjad.glissando(1)
+                                \hide NoteHead
+                                  %! abjad.glissando(1)
+                                \override Accidental.stencil = ##f
+                                  %! abjad.glissando(1)
+                                \override NoteColumn.glissando-skip = ##t
+                                  %! abjad.glissando(1)
+                                \override NoteHead.no-ledgers = ##t
+                                  %! abjad.glissando(6)
+                                \revert Accidental.stencil
+                                  %! abjad.glissando(6)
+                                \revert NoteColumn.glissando-skip
+                                  %! abjad.glissando(6)
+                                \revert NoteHead.no-ledgers
+                                  %! abjad.glissando(6)
+                                \undo \hide NoteHead
+                                b16
+                            }
+                        }
+                        \tweak text #tuplet-number::calc-fraction-text
+                        \times 1/1
+                        {
+                            r2
+                            \once \override Dots.staff-position = #2
+                            \afterGrace
+                            b4
+                              %! abjad.glissando(7)
+                            - \abjad-zero-padding-glissando
+                              %! abjad.glissando(7)
+                            \glissando
+                            {
+                                \once \override Accidental.stencil = ##f
+                                \once \override Dots.staff-position = #2
+                                \once \override NoteHead.no-ledgers = ##t
+                                \once \override NoteHead.transparent = ##t
+                                  %! abjad.glissando(1)
+                                \hide NoteHead
+                                  %! abjad.glissando(1)
+                                \override Accidental.stencil = ##f
+                                  %! abjad.glissando(1)
+                                \override NoteColumn.glissando-skip = ##t
+                                  %! abjad.glissando(1)
+                                \override NoteHead.no-ledgers = ##t
+                                  %! abjad.glissando(6)
+                                \revert Accidental.stencil
+                                  %! abjad.glissando(6)
+                                \revert NoteColumn.glissando-skip
+                                  %! abjad.glissando(6)
+                                \revert NoteHead.no-ledgers
+                                  %! abjad.glissando(6)
+                                \undo \hide NoteHead
+                                b16
+                            }
+                            \once \override Dots.staff-position = #2
+                            \afterGrace
+                            b4
+                              %! abjad.glissando(7)
+                            - \abjad-zero-padding-glissando
+                              %! abjad.glissando(7)
+                            \glissando
+                            {
+                                \once \override Accidental.stencil = ##f
+                                \once \override Dots.staff-position = #2
+                                \once \override NoteHead.no-ledgers = ##t
+                                \once \override NoteHead.transparent = ##t
+                                  %! abjad.glissando(1)
+                                \hide NoteHead
+                                  %! abjad.glissando(1)
+                                \override Accidental.stencil = ##f
+                                  %! abjad.glissando(1)
+                                \override NoteColumn.glissando-skip = ##t
+                                  %! abjad.glissando(1)
+                                \override NoteHead.no-ledgers = ##t
+                                  %! abjad.glissando(6)
+                                \revert Accidental.stencil
+                                  %! abjad.glissando(6)
+                                \revert NoteColumn.glissando-skip
+                                  %! abjad.glissando(6)
+                                \revert NoteHead.no-ledgers
+                                  %! abjad.glissando(6)
+                                \undo \hide NoteHead
+                                b16
+                            }
+                            \once \override Dots.staff-position = #2
+                            \afterGrace
+                            b1.
+                              %! abjad.glissando(7)
+                            - \abjad-zero-padding-glissando
+                              %! abjad.glissando(7)
+                            \glissando
+                            {
+                                \once \override Accidental.stencil = ##f
+                                \once \override Dots.staff-position = #2
+                                \once \override NoteHead.no-ledgers = ##t
+                                \once \override NoteHead.transparent = ##t
+                                  %! abjad.glissando(1)
+                                \hide NoteHead
+                                  %! abjad.glissando(1)
+                                \override Accidental.stencil = ##f
+                                  %! abjad.glissando(1)
+                                \override NoteColumn.glissando-skip = ##t
+                                  %! abjad.glissando(1)
+                                \override NoteHead.no-ledgers = ##t
+                                  %! abjad.glissando(6)
+                                \revert Accidental.stencil
+                                  %! abjad.glissando(6)
+                                \revert NoteColumn.glissando-skip
+                                  %! abjad.glissando(6)
+                                \revert NoteHead.no-ledgers
+                                  %! abjad.glissando(6)
+                                \undo \hide NoteHead
+                                b16
+                            }
+                            \once \override Dots.staff-position = #2
+                            \afterGrace
+                            b4
+                              %! abjad.glissando(7)
+                            - \abjad-zero-padding-glissando
+                              %! abjad.glissando(7)
+                            \glissando
+                            {
+                                \once \override Accidental.stencil = ##f
+                                \once \override Dots.staff-position = #2
+                                \once \override NoteHead.no-ledgers = ##t
+                                \once \override NoteHead.transparent = ##t
+                                  %! abjad.glissando(1)
+                                \hide NoteHead
+                                  %! abjad.glissando(1)
+                                \override Accidental.stencil = ##f
+                                  %! abjad.glissando(1)
+                                \override NoteColumn.glissando-skip = ##t
+                                  %! abjad.glissando(1)
+                                \override NoteHead.no-ledgers = ##t
+                                  %! abjad.glissando(6)
+                                \revert Accidental.stencil
+                                  %! abjad.glissando(6)
+                                \revert NoteColumn.glissando-skip
+                                  %! abjad.glissando(6)
+                                \revert NoteHead.no-ledgers
+                                  %! abjad.glissando(6)
+                                \undo \hide NoteHead
+                                b16
+                            }
+                        }
+                        \tweak text #tuplet-number::calc-fraction-text
+                        \times 1/1
+                        {
+                            \once \override Dots.staff-position = #2
+                            \afterGrace
                             b8
+                              %! abjad.glissando(7)
+                            - \abjad-zero-padding-glissando
+                              %! abjad.glissando(7)
+                            \glissando
+                            {
+                                \once \override Accidental.stencil = ##f
+                                \once \override Dots.staff-position = #2
+                                \once \override NoteHead.no-ledgers = ##t
+                                \once \override NoteHead.transparent = ##t
+                                  %! abjad.glissando(1)
+                                \hide NoteHead
+                                  %! abjad.glissando(1)
+                                \override Accidental.stencil = ##f
+                                  %! abjad.glissando(1)
+                                \override NoteColumn.glissando-skip = ##t
+                                  %! abjad.glissando(1)
+                                \override NoteHead.no-ledgers = ##t
+                                  %! abjad.glissando(6)
+                                \revert Accidental.stencil
+                                  %! abjad.glissando(6)
+                                \revert NoteColumn.glissando-skip
+                                  %! abjad.glissando(6)
+                                \revert NoteHead.no-ledgers
+                                  %! abjad.glissando(6)
+                                \undo \hide NoteHead
+                                b16
+                            }
+                            \once \override Dots.staff-position = #2
+                            \afterGrace
+                            b4
+                              %! abjad.glissando(7)
+                            - \abjad-zero-padding-glissando
+                              %! abjad.glissando(7)
+                            \glissando
+                            {
+                                \once \override Accidental.stencil = ##f
+                                \once \override Dots.staff-position = #2
+                                \once \override NoteHead.no-ledgers = ##t
+                                \once \override NoteHead.transparent = ##t
+                                  %! abjad.glissando(1)
+                                \hide NoteHead
+                                  %! abjad.glissando(1)
+                                \override Accidental.stencil = ##f
+                                  %! abjad.glissando(1)
+                                \override NoteColumn.glissando-skip = ##t
+                                  %! abjad.glissando(1)
+                                \override NoteHead.no-ledgers = ##t
+                                  %! abjad.glissando(6)
+                                \revert Accidental.stencil
+                                  %! abjad.glissando(6)
+                                \revert NoteColumn.glissando-skip
+                                  %! abjad.glissando(6)
+                                \revert NoteHead.no-ledgers
+                                  %! abjad.glissando(6)
+                                \undo \hide NoteHead
+                                b16
+                            }
+                            \once \override Dots.staff-position = #2
+                            \afterGrace
+                            b16
+                              %! abjad.glissando(7)
+                            - \abjad-zero-padding-glissando
+                              %! abjad.glissando(7)
+                            \glissando
+                            {
+                                \once \override Accidental.stencil = ##f
+                                \once \override Dots.staff-position = #2
+                                \once \override NoteHead.no-ledgers = ##t
+                                \once \override NoteHead.transparent = ##t
+                                  %! abjad.glissando(1)
+                                \hide NoteHead
+                                  %! abjad.glissando(1)
+                                \override Accidental.stencil = ##f
+                                  %! abjad.glissando(1)
+                                \override NoteColumn.glissando-skip = ##t
+                                  %! abjad.glissando(1)
+                                \override NoteHead.no-ledgers = ##t
+                                  %! abjad.glissando(6)
+                                \revert Accidental.stencil
+                                  %! abjad.glissando(6)
+                                \revert NoteColumn.glissando-skip
+                                  %! abjad.glissando(6)
+                                \revert NoteHead.no-ledgers
+                                  %! abjad.glissando(6)
+                                \undo \hide NoteHead
+                                b16
+                            }
+                            \once \override Dots.staff-position = #2
+                            \afterGrace
+                            b16
                               %! abjad.glissando(7)
                             - \abjad-zero-padding-glissando
                               %! abjad.glissando(7)

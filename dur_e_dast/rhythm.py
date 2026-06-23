@@ -10,7 +10,7 @@ from dur_e_dast import rhythm
 from dur_e_dast import ts
 
 
-def rhythm_a(index):
+def rhythm_a(index, invert=None, alpha=None, multiply=False):
     def return_rhythms(durations):
         integer_sequence = trinton.rotated_sequence(
             ts.all_groupings, index % len(ts.all_groupings)
@@ -26,6 +26,50 @@ def rhythm_a(index):
             cyclic=True,
             overhang=True,
         )
+
+        if invert is not None:
+            inverted_chords = trinton.invert(chords=chords, transposition=invert)
+
+            new_chords = []
+
+            for chord, inverted_chord in zip(chords, inverted_chords):
+                new_chords.append(chord)
+                new_chords.append(inverted_chord)
+
+            chords = new_chords
+
+        if alpha is not None:
+            alpha_chords = []
+
+            for chord in chords:
+                sequence = evans.Sequence(chord)
+                alpha_chord = sequence.alpha(category=alpha)
+                alpha_chord = [_ for _ in alpha_chord]
+                alpha_chords.append(alpha_chord)
+
+            new_chords = []
+
+            for chord, alpha_chord in zip(chords, alpha_chords):
+                new_chords.append(chord)
+                new_chords.append(alpha_chord)
+
+            chords = new_chords
+
+        if multiply is True:
+            multiplied_chords = []
+
+            for chord in chords:
+                multiplied_chord = [pitch * 5 for pitch in chord]
+                multiplied_chord = [pitch % 12 for pitch in multiplied_chord]
+                multiplied_chords.append(multiplied_chord)
+
+            new_chords = []
+
+            for chord, multiplied_chord in zip(chords, multiplied_chords):
+                new_chords.append(chord)
+                new_chords.append(multiplied_chord)
+
+            chords = new_chords
 
         tuplet_ratios = []
 
@@ -73,6 +117,62 @@ def rhythm_a(index):
         container = abjad.Container()
         rhythm_selections = rmakers.tuplet(durations, tuplet_ratios)
         container.extend(rhythm_selections)
+
+        rhythm_selections = abjad.mutate.eject_contents(container)
+        return rhythm_selections
+
+    return return_rhythms
+
+
+def rhythm_c(index, nesting_level=None, nesting_selector=None):
+    def return_rhythms(durations):
+        integer_sequence = abjad.sequence.flatten(ts.all_groupings)
+        integer_sequence = trinton.rotated_sequence(
+            integer_sequence, index % len(integer_sequence)
+        )
+        integer_sequence = [_ % 3 for _ in integer_sequence]
+        integer_sequence = [_ + 3 for _ in integer_sequence]
+
+        tuplet_ratios = []
+        for subdivision, duration in zip(integer_sequence, durations):
+            duration_denominator = duration.denominator
+            duration_numerator = duration.numerator
+
+            duration_modulus = 4 / duration_denominator
+            pulse_group = duration_numerator * duration_modulus
+            pulse_group = int(pulse_group)
+
+            while subdivision > pulse_group:
+                pulse_group = pulse_group * 2
+
+            proportion = [1 for _ in range(0, subdivision)]
+
+            partition = abjad.Ratio(proportion).partition_integer(pulse_group)
+            partition = tuple(partition)
+            tuplet_ratios.append(partition)
+
+        container = abjad.Container()
+        rhythm_selections = rmakers.tuplet(durations, tuplet_ratios)
+        container.extend(rhythm_selections)
+
+        if nesting_level is not None:
+            sub_ratios = []
+            for tuplet_ratio in tuplet_ratios:
+                tuplet_list = [_ for _ in tuplet_ratio]
+                tuplet_permutations = list(itertools.permutations(tuplet_list))
+                for permutation in tuplet_permutations:
+                    tuplet = tuple(permutation)
+                    sub_ratios.append(tuplet)
+
+            for _ in range(0, nesting_level):
+                relevant_ties = nesting_selector(container)
+                for tie, sub_ratio in zip(relevant_ties, itertools.cycle(sub_ratios)):
+                    tie_duration = abjad.get.duration(tie, preprolated=True)
+                    if tie_duration < abjad.Duration((1, 2)):
+                        pass
+                    else:
+                        tuplet = rmakers.tuplet([tie_duration], [sub_ratio])
+                        abjad.mutate.replace(tie, tuplet)
 
         rhythm_selections = abjad.mutate.eject_contents(container)
         return rhythm_selections

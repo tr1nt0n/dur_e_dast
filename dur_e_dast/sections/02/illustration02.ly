@@ -288,35 +288,65 @@
                         s1 * 1/4
                         s1 * 1/4
                         \stopStaffHighlight
-                        \staffHighlight \二 
-                        s1 * 1/4
-                        s1 * 1/4
-                        s1 * 1/4
-                        s1 * 1/4
-                        s1 * 1/4
-                        s1 * 1/4
-                        s1 * 1/4
-                        s1 * 1/4
-                        s1 * 1/4
-                        s1 * 1/4
-                        s1 * 1/4
-                        s1 * 1/4
-                        s1 * 1/4
-                        s1 * 1/4
-                        s1 * 1/4
-                        s1 * 1/4
-                        \stopStaffHighlight
-                        \staffHighlight \二 
-                        s1 * 1/4
-                        s1 * 1/4
-                        s1 * 1/4
-                        s1 * 1/4
-                        s1 * 1/4
-                        s1 * 1/4
-                        s1 * 1/4
-                        s1 * 1/4
-                        s1 * 1/4
-                        \stopStaffHighlight
+                        \tweak text #tuplet-number::calc-fraction-text
+                        \times 1/1
+                        {
+                            \staffHighlight \二 
+                            b2
+                            \times 8/9
+                            {
+                                b8
+                                b8
+                                b16
+                                b8
+                                b8
+                            }
+                            b4
+                            \times 8/9
+                            {
+                                b8
+                                b8
+                                b16
+                                b8
+                                b8
+                            }
+                            \times 8/9
+                            {
+                                b8
+                                b8
+                                b8
+                                b16
+                                b8
+                            }
+                        }
+                        \tweak text #tuplet-number::calc-fraction-text
+                        \times 1/1
+                        {
+                            b2
+                            b2.
+                            b2
+                        }
+                        \tweak text #tuplet-number::calc-fraction-text
+                        \times 1/1
+                        {
+                            \times 2/3
+                            {
+                                b4
+                                b4
+                                b4
+                                b4
+                                b8
+                            }
+                            b2.
+                            \times 2/3
+                            {
+                                b4
+                                b4
+                                b4
+                                b8
+                                b4
+                            }
+                        }
                         \staffHighlight \三 
                         s1 * 1/4
                         s1 * 1/4

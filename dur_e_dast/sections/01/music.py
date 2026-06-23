@@ -30,7 +30,7 @@ library.illustrate_structure(
 
 trinton.make_music(
     lambda _: trinton.select_target(_, (1, 23)),
-    evans.RhythmHandler(rhythm.rhythm_a(index=0)),
+    evans.RhythmHandler(rhythm.rhythm_a(index=0, invert=None, alpha=1, multiply=True)),
     evans.PitchHandler(["b"]),
     library.erase_ties(),
     trinton.duration_line(selector=trinton.logical_ties(pitched=True, grace=False)),
