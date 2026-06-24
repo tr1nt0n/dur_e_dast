@@ -26,6 +26,33 @@ library.illustrate_structure(
     material_sequence=material_sequence.material_sequence[9:],
 )
 
+library.illustrate_pitch_structure(
+    score=score,
+    voice_names=["percussion 1 voice", "percussion 2 voice"],
+    measure_groupings=trinton.rotated_sequence(
+        material_sequence.pitch_groupings, 15 % len(material_sequence.pitch_groupings)
+    ),
+    pitch_sequence=trinton.rotated_sequence(
+        material_sequence.pitch_sequence, 15 % len(material_sequence.pitch_sequence)
+    ),
+    measure_limit=14,
+)
+
+library.illustrate_pitch_structure(
+    score=score,
+    voice_names=["percussion 1 voice", "percussion 2 voice"],
+    measure_groupings=trinton.rotated_sequence(
+        material_sequence.implement_groupings,
+        10 % len(material_sequence.implement_groupings),
+    ),
+    pitch_sequence=trinton.rotated_sequence(
+        material_sequence.implement_sequence,
+        10 % len(material_sequence.implement_sequence),
+    ),
+    measure_limit=14,
+    material_markup="I",
+)
+
 # music
 
 # trinton.make_music(

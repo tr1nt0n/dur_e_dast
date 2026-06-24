@@ -26,6 +26,23 @@ library.illustrate_structure(
     material_sequence=material_sequence.material_sequence[0:2],
 )
 
+library.illustrate_pitch_structure(
+    score=score,
+    voice_names=["percussion 1 voice", "percussion 2 voice"],
+    measure_groupings=material_sequence.pitch_groupings,
+    pitch_sequence=material_sequence.pitch_sequence,
+    measure_limit=29,
+)
+
+library.illustrate_pitch_structure(
+    score=score,
+    voice_names=["percussion 1 voice", "percussion 2 voice"],
+    measure_groupings=material_sequence.implement_groupings,
+    pitch_sequence=material_sequence.implement_sequence,
+    measure_limit=29,
+    material_markup="I",
+)
+
 # music
 
 # trinton.make_music(

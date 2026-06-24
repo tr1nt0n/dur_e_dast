@@ -139,6 +139,12 @@
                     {
                         \staffHighlight \三 
                         s1 * 1/4
+                        - \tweak color \一
+                        - \tweak layer 100
+                        ^ \markup \override #'(font-name . " Bodoni72 Book ") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #4 \box \line { I1 }
+                        - \tweak color \二
+                        - \tweak layer 100
+                        ^ \markup \override #'(font-name . " Bodoni72 Book ") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #4 \box \line { P2 }
                         s1 * 1/4
                         s1 * 1/4
                         s1 * 1/4
@@ -146,6 +152,9 @@
                         s1 * 1/4
                         s1 * 1/4
                         s1 * 1/4
+                        - \tweak color \一
+                        - \tweak layer 100
+                        ^ \markup \override #'(font-name . " Bodoni72 Book ") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #4 \box \line { P1 }
                         s1 * 1/4
                         \stopStaffHighlight
                         \staffHighlight \一 
@@ -154,6 +163,12 @@
                         s1 * 1/4
                         s1 * 1/4
                         s1 * 1/4
+                        - \tweak color \三
+                        - \tweak layer 100
+                        ^ \markup \override #'(font-name . " Bodoni72 Book ") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #4 \box \line { I3 }
+                        - \tweak color \三
+                        - \tweak layer 100
+                        ^ \markup \override #'(font-name . " Bodoni72 Book ") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #4 \box \line { P3 }
                         s1 * 1/4
                         s1 * 1/4
                         s1 * 1/4
@@ -166,8 +181,14 @@
                         s1 * 1/4
                         s1 * 1/4
                         s1 * 1/4
+                        - \tweak color \一
+                        - \tweak layer 100
+                        ^ \markup \override #'(font-name . " Bodoni72 Book ") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #4 \box \line { P1 }
                         s1 * 1/4
                         s1 * 1/4
+                        - \tweak color \三
+                        - \tweak layer 100
+                        ^ \markup \override #'(font-name . " Bodoni72 Book ") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #4 \box \line { P3 }
                         s1 * 1/4
                         s1 * 1/4
                         s1 * 1/4
@@ -185,6 +206,12 @@
                         \staffHighlight \二 
                         \once \override NoteHead.transparent = ##t
                         c'4
+                        - \tweak color \一
+                        - \tweak layer 100
+                        ^ \markup \override #'(font-name . " Bodoni72 Book ") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #4 \box \line { P1 }
+                        - \tweak color \三
+                        - \tweak layer 100
+                        ^ \markup \override #'(font-name . " Bodoni72 Book ") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #4 \box \line { I3 }
                         ~
                         \once \override Accidental.stencil = ##f
                         \once \override NoteHead.no-ledgers = ##t
@@ -220,6 +247,9 @@
                         \once \override NoteHead.no-ledgers = ##t
                         \once \override NoteHead.transparent = ##t
                         c'4
+                        - \tweak color \三
+                        - \tweak layer 100
+                        ^ \markup \override #'(font-name . " Bodoni72 Book ") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #4 \box \line { P3 }
                         ~
                         \once \override Accidental.stencil = ##f
                         \once \override NoteHead.no-ledgers = ##t
@@ -231,6 +261,12 @@
                         s1 * 1/4
                         s1 * 1/4
                         s1 * 1/4
+                        - \tweak color \二
+                        - \tweak layer 100
+                        ^ \markup \override #'(font-name . " Bodoni72 Book ") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #4 \box \line { I2 }
+                        - \tweak color \二
+                        - \tweak layer 100
+                        ^ \markup \override #'(font-name . " Bodoni72 Book ") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #4 \box \line { P2 }
                         s1 * 1/4
                         s1 * 1/4
                         s1 * 1/4
@@ -243,8 +279,14 @@
                         s1 * 1/4
                         s1 * 1/4
                         s1 * 1/4
+                        - \tweak color \三
+                        - \tweak layer 100
+                        ^ \markup \override #'(font-name . " Bodoni72 Book ") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #4 \box \line { P3 }
                         s1 * 1/4
                         s1 * 1/4
+                        - \tweak color \二
+                        - \tweak layer 100
+                        ^ \markup \override #'(font-name . " Bodoni72 Book ") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #4 \box \line { P2 }
                         s1 * 1/4
                         s1 * 1/4
                         s1 * 1/4
