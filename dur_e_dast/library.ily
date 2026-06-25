@@ -482,6 +482,9 @@ drum-center = \markup {
     % \hspace #-1.5
     \fontsize #9
     \override #'(font-name . "ekmelos")
+    \override #'(layer . 100)
+    \override #'(whiteout-style . "outline")
+    \override #'(whiteout . 1)
     \char ##xe7FF
 }
 
@@ -505,6 +508,9 @@ drum-rim = \markup {
     % \hspace #-1.5
     \fontsize #9
     \override #'(font-name . "ekmelos")
+    \override #'(layer . 100)
+    \override #'(whiteout-style . "outline")
+    \override #'(whiteout . 1)
     \char ##xe802
 }
 

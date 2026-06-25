@@ -102,7 +102,7 @@ afterGraceFraction = #(cons 15 16)
         \override BarLine.bar-extent = #'(-5 . 5)
         \override BarLine.extra-offset = #'(1.1 . 0)
 
-        \override SpanBar.extra-offset = #'(1.1 . 0)
+        \override SpanBar.extra-offset = #'(1.55 . 0)
 
         autoBeaming = ##f
         % \override Beam.breakable = ##t

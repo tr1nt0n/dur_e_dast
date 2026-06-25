@@ -39,8 +39,8 @@ def break_systems(score, global_context, i_offset=0):
                 abjad.LilyPondLiteral(
                     [
                         r"\break",
-                        r"\once \override Staff.BarLine.extra-offset = #'(0 . 0)",
-                        r"\once \override Staff.SpanBar.extra-offset = #'(0 . 0)",
+                        r"\once \override Score.BarLine.extra-offset = #'(0 . 0)",
+                        r"\once \override Score.SpanBar.extra-offset = #'(0 . 0)",
                     ],
                     site="absolute_after",
                 ),

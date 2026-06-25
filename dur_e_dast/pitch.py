@@ -98,3 +98,58 @@ def pitch_b(index, selector=trinton.logical_ties(pitched=True, grace=False)):
         pitch_handler(selections)
 
     return do_pitching
+
+
+def pitch_c(
+    index, voice_index=None, selector=trinton.logical_ties(pitched=True, grace=False)
+):
+    def do_pitching(argument):
+        components = abjad.select.components(argument)
+        selections = selector(argument)
+
+        interval_sequence = abjad.sequence.flatten(ts.all_groupings)
+        interval_sequence = trinton.rotated_sequence(
+            interval_sequence, index % len(interval_sequence)
+        )
+
+        chords = []
+
+        for i, interval in enumerate(interval_sequence):
+            if i == 0:
+                first_pitch = 0
+            else:
+                previous_chord = chords[i - 1]
+                first_pitch = previous_chord[-1]
+
+            second_pitch = first_pitch + interval
+            second_pitch = second_pitch % 6
+            chord = [first_pitch, second_pitch]
+            chords.append(chord)
+
+        chords = trinton.rotated_sequence(chords, index % len(chords))
+
+        if voice_index is not None:
+            initial_pitch_list = []
+            for chord in chords:
+                relevant_pitch = chord[voice_index]
+                initial_pitch_list.append(relevant_pitch)
+
+            final_pitch_list = []
+
+            for pitch, tuplet in zip(
+                itertools.cycle(initial_pitch_list), abjad.select.tuplets(components)
+            ):
+                limit = len(abjad.select.logical_ties(tuplet))
+                for _ in range(0, limit):
+                    final_pitch_list.append(_index_to_pitch_name[pitch])
+
+            pitch_list = final_pitch_list
+
+        else:
+            pitch_list = chords
+
+        pitch_handler = evans.PitchHandler(pitch_list=pitch_list)
+
+        pitch_handler(selections)
+
+    return do_pitching

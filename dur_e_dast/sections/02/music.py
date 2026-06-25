@@ -110,11 +110,28 @@ trinton.fermata_measures(
     voice_names=["percussion 1 voice", "percussion 2 voice"],
     font_size=14,
     clef_whitespace=True,
-    blank=False,
+    blank=True,
     last_measure=False,
     padding=-6,
     # extra_offset=2.5,
     tag=abjad.Tag("+SCORE"),
+)
+
+trinton.make_music(
+    lambda _: trinton.select_target(_, (68,)),
+    trinton.attachment_command(
+        attachments=[
+            abjad.LilyPondLiteral(
+                [
+                    r"\once \override Score.BarLine.extra-offset = #'(0 . 0)",
+                    r"\once \override Score.SpanBar.extra-offset = #'(0 . 0)",
+                ],
+                site="before",
+            ),
+        ],
+        selector=trinton.select_leaves_by_index([0]),
+    ),
+    voice=score["Global Context"],
 )
 
 # tempi

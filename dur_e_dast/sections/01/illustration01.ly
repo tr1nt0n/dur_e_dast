@@ -55,8 +55,8 @@
             \time 1/4
             s1 * 1/4
             \break
-            \once \override Staff.BarLine.extra-offset = #'(0 . 0)
-            \once \override Staff.SpanBar.extra-offset = #'(0 . 0)
+            \once \override Score.BarLine.extra-offset = #'(0 . 0)
+            \once \override Score.SpanBar.extra-offset = #'(0 . 0)
             \stopMeasureSpanner
               %! +SCORE
             \once \override Score.NonMusicalPaperColumn.line-break-system-details = #'((alignment-distances . (6)))
@@ -91,8 +91,10 @@
             \time 1/4
             s1 * 1/4
             \break
-            \once \override Staff.BarLine.extra-offset = #'(0 . 0)
-            \once \override Staff.SpanBar.extra-offset = #'(0 . 0)
+            \once \override Score.BarLine.extra-offset = #'(0 . 0)
+            \once \override Score.SpanBar.extra-offset = #'(0 . 0)
+              %! +SCORE
+            \once \override Score.NonMusicalPaperColumn.line-break-system-details = #'((alignment-distances . (4 20)))
             \time 1/4
             s1 * 1/4
             \noBreak
@@ -127,6 +129,8 @@
             \stopMeasureSpanner
             \once \override Score.BarLine.transparent = ##f
             \once \override MultiMeasureRest.transparent = ##t
+            \once \override Score.BarLine.extra-offset = #'(0 . 0)
+            \once \override Score.SpanBar.extra-offset = #'(0 . 0)
             \once \override Score.TimeSignature.stencil = ##f
             \time 1/4
             R1 * 1/4
@@ -134,8 +138,8 @@
             - \tweak padding -6
             _ \middle-fermata
             \break
-            \once \override Staff.BarLine.extra-offset = #'(0 . 0)
-            \once \override Staff.SpanBar.extra-offset = #'(0 . 0)
+            \once \override Score.BarLine.extra-offset = #'(0 . 0)
+            \once \override Score.SpanBar.extra-offset = #'(0 . 0)
             \once \override Score.BarLine.transparent = ##f
             \once \override Staff.BarLine.glyph-name = "||" 
         }
@@ -662,25 +666,109 @@
                                   %! abjad.glissando(6)
                                 \undo \hide NoteHead
                                 e16
-                                \!
                                 \stopTextSpan
                             }
                         }
                         \tweak text #tuplet-number::calc-fraction-text
                         \times 1/1
                         {
-                            c'8
-                            c'4
-                            c'16
-                            c'16
+                            \once \override Dots.staff-position = #2
+                            \afterGrace
+                            e8
+                              %! abjad.glissando(7)
+                            - \abjad-zero-padding-glissando
+                              %! abjad.glissando(7)
+                            \glissando
+                            {
+                                \once \override Accidental.stencil = ##f
+                                \once \override Dots.staff-position = #2
+                                \once \override NoteHead.no-ledgers = ##t
+                                \once \override NoteHead.transparent = ##t
+                                  %! abjad.glissando(1)
+                                \hide NoteHead
+                                  %! abjad.glissando(1)
+                                \override Accidental.stencil = ##f
+                                  %! abjad.glissando(1)
+                                \override NoteColumn.glissando-skip = ##t
+                                  %! abjad.glissando(1)
+                                \override NoteHead.no-ledgers = ##t
+                                  %! abjad.glissando(6)
+                                \revert Accidental.stencil
+                                  %! abjad.glissando(6)
+                                \revert NoteColumn.glissando-skip
+                                  %! abjad.glissando(6)
+                                \revert NoteHead.no-ledgers
+                                  %! abjad.glissando(6)
+                                \undo \hide NoteHead
+                                e16
+                                \!
+                            }
+                            e4
+                            - \accent
+                            b16
+                            f'16
                         }
+                        <<
+                            \context Voice = "percussion 1 voice temp 1"
+                            {
+                                \times 4/5
+                                {
+                                    \voiceOne
+                                    e8.
+                                    _ \accent
+                                    e8.
+                                    _ \accent
+                                    \<
+                                    b8.
+                                    f'8.
+                                    a'8.
+                                    \mf
+                                }
+                                \tweak text #tuplet-number::calc-fraction-text
+                                \times 1/1
+                                {
+                                    b4
+                                    _ \accent
+                                    b4
+                                    _ \accent
+                                    b4
+                                    _ \accent
+                                }
+                            }
+                            \context Voice = "percussion 1 voice polyrhythm 1"
+                            {
+                                \tweak text #tuplet-number::calc-fraction-text
+                                \times 1/1
+                                {
+                                    \voiceTwo
+                                    a'4
+                                    f'4
+                                    g4
+                                }
+                                \tweak text #tuplet-number::calc-fraction-text
+                                \times 1/1
+                                {
+                                    a'8.
+                                    ^ \accent
+                                    a'8.
+                                    ^ \accent
+                                    a'8.
+                                    ^ \accent
+                                    a'8.
+                                    ^ \accent
+                                }
+                            }
+                        >>
+                        \oneVoice
+                          %! +SCORE
+                        \once \override MultiMeasureRest.transparent = ##t
+                          %! +SCORE
+                        \once \override Rest.transparent = ##t
+                          %! +SCORE
+                        \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                         s1 * 1/4
-                        s1 * 1/4
-                        s1 * 1/4
-                        s1 * 1/4
-                        s1 * 1/4
-                        s1 * 1/4
-                        s1 * 1/4
+                          %! +SCORE
+                        \stopStaff \startStaff
                         \once \override Staff.BarLine.glyph-name = "||" 
                     }
                 }
@@ -710,14 +798,170 @@
                         s1 * 1/4
                         s1 * 1/4
                         s1 * 1/4
+                        - \tweak layer 100
+                        ^ \markup \override #'(font-name . " Bodoni72 Book ") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #2 \box \line { Scrubbing Brush }
                         s1 * 1/4
+                        \tweak text #tuplet-number::calc-fraction-text
+                        \times 1/1
+                        {
+                            r4
+                            \once \override Dots.staff-position = #2
+                            \afterGrace
+                            b4
+                            ^ \tenuto
+                            (
+                              %! abjad.glissando(7)
+                            - \abjad-zero-padding-glissando
+                              %! abjad.glissando(7)
+                            \glissando
+                            - \tweak padding #4
+                            - \abjad-solid-line-with-arrow
+                            - \tweak bound-details.left.text \markup \concat { \drum-center \hspace #0.5 }
+                            \startTextSpan
+                            {
+                                \once \override Accidental.stencil = ##f
+                                \once \override Dots.staff-position = #2
+                                \once \override NoteHead.no-ledgers = ##t
+                                \once \override NoteHead.transparent = ##t
+                                  %! abjad.glissando(1)
+                                \hide NoteHead
+                                  %! abjad.glissando(1)
+                                \override Accidental.stencil = ##f
+                                  %! abjad.glissando(1)
+                                \override NoteColumn.glissando-skip = ##t
+                                  %! abjad.glissando(1)
+                                \override NoteHead.no-ledgers = ##t
+                                  %! abjad.glissando(6)
+                                \revert Accidental.stencil
+                                  %! abjad.glissando(6)
+                                \revert NoteColumn.glissando-skip
+                                  %! abjad.glissando(6)
+                                \revert NoteHead.no-ledgers
+                                  %! abjad.glissando(6)
+                                \undo \hide NoteHead
+                                b16
+                                \stopTextSpan
+                                - \tweak padding #4
+                                - \abjad-solid-line-with-arrow
+                                - \tweak bound-details.left.text \markup \concat { \drum-rim \hspace #0.5 }
+                                - \tweak bound-details.right.text \drum-center
+                                \startTextSpan
+                            }
+                            \once \override Dots.staff-position = #2
+                            \afterGrace
+                            g4
+                              %! abjad.glissando(7)
+                            - \abjad-zero-padding-glissando
+                              %! abjad.glissando(7)
+                            \glissando
+                            {
+                                \once \override Accidental.stencil = ##f
+                                \once \override Dots.staff-position = #2
+                                \once \override NoteHead.no-ledgers = ##t
+                                \once \override NoteHead.transparent = ##t
+                                  %! abjad.glissando(1)
+                                \hide NoteHead
+                                  %! abjad.glissando(1)
+                                \override Accidental.stencil = ##f
+                                  %! abjad.glissando(1)
+                                \override NoteColumn.glissando-skip = ##t
+                                  %! abjad.glissando(1)
+                                \override NoteHead.no-ledgers = ##t
+                                  %! abjad.glissando(6)
+                                \revert Accidental.stencil
+                                  %! abjad.glissando(6)
+                                \revert NoteColumn.glissando-skip
+                                  %! abjad.glissando(6)
+                                \revert NoteHead.no-ledgers
+                                  %! abjad.glissando(6)
+                                \undo \hide NoteHead
+                                g16
+                                )
+                                \stopTextSpan
+                            }
+                        }
+                        \times 4/5
+                        {
+                            r2.
+                            \once \override Dots.staff-position = #2
+                            \afterGrace
+                            a'16.
+                            ^ \tenuto
+                              %! abjad.glissando(7)
+                            - \abjad-zero-padding-glissando
+                              %! abjad.glissando(7)
+                            \glissando
+                            - \tweak padding #5
+                            - \abjad-solid-line-with-arrow
+                            - \tweak bound-details.left.text \markup \concat { \drum-rim \hspace #0.5 }
+                            - \tweak bound-details.right.text \drum-center
+                            \startTextSpan
+                            _ (
+                            {
+                                \once \override Accidental.stencil = ##f
+                                \once \override Dots.staff-position = #2
+                                \once \override NoteHead.no-ledgers = ##t
+                                \once \override NoteHead.transparent = ##t
+                                  %! abjad.glissando(1)
+                                \hide NoteHead
+                                  %! abjad.glissando(1)
+                                \override Accidental.stencil = ##f
+                                  %! abjad.glissando(1)
+                                \override NoteColumn.glissando-skip = ##t
+                                  %! abjad.glissando(1)
+                                \override NoteHead.no-ledgers = ##t
+                                  %! abjad.glissando(6)
+                                \revert Accidental.stencil
+                                  %! abjad.glissando(6)
+                                \revert NoteColumn.glissando-skip
+                                  %! abjad.glissando(6)
+                                \revert NoteHead.no-ledgers
+                                  %! abjad.glissando(6)
+                                \undo \hide NoteHead
+                                a'16
+                            }
+                            \once \override Dots.staff-position = #2
+                            \afterGrace
+                            f'16.
+                              %! abjad.glissando(7)
+                            - \abjad-zero-padding-glissando
+                              %! abjad.glissando(7)
+                            \glissando
+                            {
+                                \once \override Accidental.stencil = ##f
+                                \once \override Dots.staff-position = #2
+                                \once \override NoteHead.no-ledgers = ##t
+                                \once \override NoteHead.transparent = ##t
+                                  %! abjad.glissando(1)
+                                \hide NoteHead
+                                  %! abjad.glissando(1)
+                                \override Accidental.stencil = ##f
+                                  %! abjad.glissando(1)
+                                \override NoteColumn.glissando-skip = ##t
+                                  %! abjad.glissando(1)
+                                \override NoteHead.no-ledgers = ##t
+                                  %! abjad.glissando(6)
+                                \revert Accidental.stencil
+                                  %! abjad.glissando(6)
+                                \revert NoteColumn.glissando-skip
+                                  %! abjad.glissando(6)
+                                \revert NoteHead.no-ledgers
+                                  %! abjad.glissando(6)
+                                \undo \hide NoteHead
+                                f'16
+                                )
+                                \stopTextSpan
+                            }
+                        }
+                          %! +SCORE
+                        \once \override MultiMeasureRest.transparent = ##t
+                          %! +SCORE
+                        \once \override Rest.transparent = ##t
+                          %! +SCORE
+                        \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                         s1 * 1/4
-                        s1 * 1/4
-                        s1 * 1/4
-                        s1 * 1/4
-                        s1 * 1/4
-                        s1 * 1/4
-                        s1 * 1/4
+                          %! +SCORE
+                        \stopStaff \startStaff
                         \once \override Staff.BarLine.glyph-name = "||" 
                     }
                 }

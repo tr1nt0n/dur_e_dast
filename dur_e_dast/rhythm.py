@@ -158,9 +158,11 @@ def rhythm_b(
 
     trinton.make_music(
         lambda _: trinton.select_target(_, measures),
-        evans.RhythmHandler(evans.tuplet(prograde_tuplet_ratios)),
+        evans.RhythmHandler(evans.tuplet(prograde_tuplet_ratios, treat_tuplets=False)),
         trinton.IntermittentVoiceHandler(
-            evans.RhythmHandler(evans.tuplet(retrograde_tuplet_ratios)),
+            evans.RhythmHandler(
+                evans.tuplet(retrograde_tuplet_ratios, treat_tuplets=False),
+            ),
             direction=abjad.DOWN,
             voice_name=f"{voice_name} polyrhythm {extra_voice}",
             temp_name=f"temp {extra_voice}",
