@@ -475,3 +475,51 @@ closed-hand = \markup {
         \char ##xe7e5
     }
 }
+
+% percussion pictograms
+
+drum-center = \markup {
+    % \hspace #-1.5
+    \fontsize #9
+    \override #'(font-name . "ekmelos")
+    \char ##xe7FF
+}
+
+#(append! default-script-alist
+   (list
+    `(centerdrum
+       . (
+           (stencil . ,ly:text-interface::print)
+           (text . ,drum-center)
+           (avoid-slur . around)
+           (padding . 0.20)
+           (script-priority . 150)
+           (side-relative-direction . ,UP)
+           (skyline-horizontal-padding . 0.20)
+           (toward-stem-shift . 0.5)
+           ))))
+
+drum-center-articulation = #(make-articulation 'centerdrum)
+
+drum-rim = \markup {
+    % \hspace #-1.5
+    \fontsize #9
+    \override #'(font-name . "ekmelos")
+    \char ##xe802
+}
+
+#(append! default-script-alist
+   (list
+    `(drumrim
+       . (
+           (stencil . ,ly:text-interface::print)
+           (text . ,drum-rim)
+           (avoid-slur . around)
+           (padding . 0.20)
+           (script-priority . 150)
+           (side-relative-direction . ,UP)
+           (skyline-horizontal-padding . 0.20)
+           (toward-stem-shift . 0.5)
+           ))))
+
+drum-rim-articulation = #(make-articulation 'drumrim)

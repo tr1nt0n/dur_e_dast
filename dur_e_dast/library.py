@@ -8,6 +8,7 @@ import dur_e_dast
 import random
 import statistics
 from sympy import combinatorics
+from dur_e_dast import ts
 
 # score
 
@@ -35,7 +36,15 @@ def break_systems(score, global_context, i_offset=0):
         i = i + i_offset
         if i % 10 == 0 and i != 0:
             abjad.attach(
-                abjad.LilyPondLiteral(r"\break", site="absolute_after"), measure
+                abjad.LilyPondLiteral(
+                    [
+                        r"\break",
+                        r"\once \override Staff.BarLine.extra-offset = #'(0 . 0)",
+                        r"\once \override Staff.SpanBar.extra-offset = #'(0 . 0)",
+                    ],
+                    site="absolute_after",
+                ),
+                measure,
             )
         else:
             abjad.attach(
@@ -61,6 +70,38 @@ def erase_ties(selector=trinton.logical_ties(pitched=True, grace=False)):
                     )
 
     return erase
+
+
+# notation tools
+
+
+def attach_pitch_a_tenuti(
+    index=0,
+    selector=trinton.logical_ties(pitched=True, grace=False),
+    direction=abjad.UP,
+):
+    def attach_tenuti(argument):
+        selections = selector(argument)
+        integer_sequence = abjad.sequence.flatten(ts.all_groupings)
+        integer_sequence = trinton.rotated_sequence(
+            integer_sequence, index % len(integer_sequence)
+        )
+
+        partitioned_selections = abjad.select.partition_by_counts(
+            selections,
+            integer_sequence,
+            cyclic=True,
+            overhang=True,
+        )
+
+        for group in partitioned_selections:
+            abjad.attach(
+                abjad.Articulation("tenuto"),
+                abjad.select.leaf(group, 0, pitched=True, grace=False),
+                direction=direction,
+            )
+
+    return attach_tenuti
 
 
 # structure

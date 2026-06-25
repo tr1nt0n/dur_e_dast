@@ -6,6 +6,7 @@ import trinton
 import itertools
 from dur_e_dast import library
 from dur_e_dast import material_sequence
+from dur_e_dast import pitch
 from dur_e_dast import rhythm
 from dur_e_dast import ts
 

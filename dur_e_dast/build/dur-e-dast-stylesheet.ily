@@ -14,7 +14,7 @@
     dedication = \markup \column {\line \override #'(font-name . "Bodoni72 Book Italic") { \fontsize #2 { "to" \override #'(font-name . "Bodoni72 Book") "Miedya" } \line { \fontsize #0.01 \with-color #white "."} } }
     title = \markup \override #'(font-name . "Bodoni72 Book Italic") \center-column { \line \fontsize #14 { "dūr-e-dest | du redest" } \fontsize #0.01 \with-color #white "."}
     subtitle = \markup \fontsize #2 \center-column { \line { \override #'(font-name . "Bodoni72 Book Italic") { "( three seats )" } } \fontsize #0.01 \with-color #white "."}
-    composer = \markup \column { \override #'(font-name . "Bodoni72") \fontsize #2 {"Trinity Hlynn Prater (*2000)"} \fontsize #30 \with-color #white "."}
+    composer = \markup \column { \override #'(font-name . "Bodoni72") \fontsize #2 {"Trinity Hlynn Prater (*2000)"}}
 }
 
 afterGraceFraction = #(cons 15 16)
@@ -40,7 +40,7 @@ afterGraceFraction = #(cons 15 16)
 
         \override BarNumber.stencil = #(make-stencil-circler 0.1 0.75 ly:text-interface::print)
         \override BarNumber.Y-extent = ##f
-        \override BarNumber.Y-offset = 7
+        \override BarNumber.Y-offset = 8.5
         \override BarNumber.X-extent = ##f
         \override BarNumber.X-offset = 0
         \override BarNumber.font-size = 1
@@ -99,10 +99,10 @@ afterGraceFraction = #(cons 15 16)
         \override BarLine.thick-thickness = #10
         \override BarLine.layer = 2
         \override BarLine.glyph-name = "!"
-        \override BarLine.bar-extent = #'(-3 . 3)
-        \override BarLine.extra-offset = #'(1.55 . 0)
+        \override BarLine.bar-extent = #'(-5 . 5)
+        \override BarLine.extra-offset = #'(1.1 . 0)
 
-        \override SpanBar.extra-offset = #'(1.55 . 0)
+        \override SpanBar.extra-offset = #'(1.1 . 0)
 
         autoBeaming = ##f
         % \override Beam.breakable = ##t
@@ -123,14 +123,32 @@ afterGraceFraction = #(cons 15 16)
         \override Clef.layer = 2
         \override Clef.whiteout-style = #'outline
         \override Clef.whiteout = 1
+        \override Clef.stencil = #ly:text-interface::print
+        \override Clef.text = \markup {
+            \fontsize #-3.5
+            \raise #3
+            \override #'(baseline-skip . 1.4)
+            {
+                \center-column {
+                    \line { M1 }
+                    \line { M2 }
+                    \line { M3 }
+                    \line { S1 }
+                    \line { S2 }
+                    \line { S3 }
+                }
+            }
+        }
 
         \override Dots.stencil = ##f
 
-        \override DynamicText.font-size = #-0.75
+        % \override DynamicText.font-size = #-0.75
         \override DynamicText.layer = 2
         \override DynamicText.whiteout-style = #'outline
         \override DynamicText.whiteout = 1
-        \override DynamicLineSpanner.staff-padding = 4
+        \override DynamicText.X-extent = ##f
+        \override DynamicText.X-offset = -0.25
+        \override DynamicLineSpanner.staff-padding = 2
 
         \override Flag.stencil = ##f
 
@@ -145,9 +163,9 @@ afterGraceFraction = #(cons 15 16)
 
         \override MeasureSpanner.direction = #UP
         \override MeasureSpanner.thickness = #1.5
-        \override MeasureSpanner.font-size = 2
+        \override MeasureSpanner.font-size = 3
         \override MeasureSpanner.font-name = "Bodoni72 Book"
-        \override MeasureSpanner.padding = 4
+        \override MeasureSpanner.padding = 6
         \override MeasureSpanner.X-extent = ##f
         \override MeasureSpanner.shorten-pair = #'(1.54 . -1.56)
 
@@ -155,6 +173,7 @@ afterGraceFraction = #(cons 15 16)
 
         \override NoteHead.style = #'la
         \override NoteHead.duration-log = 2
+        \override NoteHead.no-ledgers = ##t
 
         \override NoteCollision.merge-differently-dotted = ##t
         \override NoteCollision.merge-differently-headed = ##t
@@ -172,8 +191,9 @@ afterGraceFraction = #(cons 15 16)
 
         \override Staff.thickness = #0.5
 
-        \override StaffSymbol.width = #190.7
+        % \override StaffSymbol.width = #190.7
         \override StaffSymbol.line-count = #6
+        \override StaffSymbol.staff-space = #(magstep 3)
 
         \override Stem.stencil = ##f
 

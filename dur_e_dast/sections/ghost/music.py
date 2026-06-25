@@ -67,7 +67,16 @@ for voice_name in ["Global Context", "percussion 1 voice", "percussion 2 voice"]
 trinton.make_music(
     lambda _: trinton.select_target(_, (1,)),
     trinton.attachment_command(
-        attachments=[abjad.LilyPondLiteral(r"\break", site="absolute_after")],
+        attachments=[
+            abjad.LilyPondLiteral(
+                [
+                    r"\break",
+                    r"\once \override Staff.BarLine.extra-offset = #'(0 . 0)",
+                    r"\once \override Staff.SpanBar.extra-offset = #'(0 . 0)",
+                ],
+                site="absolute_after",
+            )
+        ],
         selector=trinton.select_leaves_by_index([0]),
     ),
     voice=score["Global Context"],

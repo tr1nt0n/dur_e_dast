@@ -6,6 +6,8 @@
             \time 10/4
             s1 * 5/2
             \break
+            \once \override Staff.BarLine.extra-offset = #'(0 . 0)
+            \once \override Staff.SpanBar.extra-offset = #'(0 . 0)
             \once \override Staff.BarLine.glyph-name = "||" 
             \stopMeasureSpanner
         }
