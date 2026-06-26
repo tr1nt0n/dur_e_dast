@@ -15,14 +15,61 @@ score = library.dur_e_dast_score([(10, 4)])
 
 # music
 
-# trinton.make_music(
-#     lambda _: trinton.select_target(_, (1, 30)),
-#     evans.RhythmHandler(
-#         evans.tuplet([(1, 1, 1), (1, 1, 1, 1), (1, 1, 1, 1, 1), (1, 1, 1)])
-#     ),
-#     voice=score["percussion 1 voice"],
-#     # preprocessor=trinton.fuse_preprocessor((5, 4, 3, 1))
-# )
+trinton.make_music(
+    lambda _: trinton.select_target(_, (1,)),
+    evans.RhythmHandler(evans.talea([1000], 4)),
+    evans.PitchHandler(["e"]),
+    trinton.duration_line(selector=trinton.logical_ties(pitched=True, grace=False)),
+    trinton.hooked_spanner_command(
+        string=trinton.boxed_markup(
+            string=[
+                r"Bow large gong on top of lowest skin drum,",
+                r"gradually moving the gong from the rim to",
+                r"the center of the drum.",
+            ],
+            column="\column",
+            font_name="Bodoni72 Book",
+            fontsize=2,
+            string_only=True,
+        ),
+        selector=trinton.select_logical_ties_by_index(
+            [0, -1], pitched=True, first=True
+        ),
+        padding=10,
+        direction=None,
+        right_padding=0.5,
+        full_string=True,
+        style="dashed-line-with-hook",
+        hspace=None,
+        command="One",
+        tag=None,
+        tweaks=[
+            r"""- \tweak font-name "Bodoni72 Book Italic" """,
+            r"""- \tweak font-size 0""",
+        ],
+    ),
+    trinton.spanner_command(
+        strings=[r"\drum-rim", r"\drum-center"],
+        selector=trinton.select_logical_ties_by_index(
+            [0, -1], pitched=True, first=True
+        ),
+        style="solid-line-with-arrow",
+        padding=4.5,
+        right_padding=0,
+        direction=None,
+        full_string=True,
+        command="Two",
+        # tweaks=[
+        #     r"""- \tweak font-size 2""",
+        # ],
+    ),
+    trinton.linear_attachment_command(
+        attachments=[abjad.StartHairpin("o<"), abjad.Dynamic('"f"')],
+        selector=trinton.select_leaves_by_index([0, -1], pitched=True),
+    ),
+    voice=score["percussion 1 voice"],
+    # preprocessor=trinton.fuse_preprocessor((5, 4, 3, 1))
+)
 
 # globals
 
@@ -37,6 +84,28 @@ trinton.make_music(
             abjad.LilyPondLiteral(r"\stopMeasureSpanner", site="absolute_after"),
         ],
         selector=trinton.select_leaves_by_index([0, -1]),
+    ),
+    voice=score["Global Context"],
+)
+
+trinton.make_music(
+    lambda _: trinton.select_target(_, (1,)),
+    trinton.attachment_command(
+        attachments=[
+            trinton.boxed_markup(
+                string=r"( Fixed Media ON )",
+                tweaks=[
+                    abjad.Tweak(r"- \tweak layer 100"),
+                    abjad.Tweak(r"- \tweak padding 7"),
+                ],
+                column="\center-column",
+                font_name="Bodoni72 Book",
+                fontsize=3,
+                string_only=False,
+            ),
+        ],
+        selector=trinton.select_leaves_by_index([0]),
+        direction=abjad.UP,
     ),
     voice=score["Global Context"],
 )
@@ -82,23 +151,23 @@ trinton.make_music(
     voice=score["Global Context"],
 )
 
-# # spacing
-#
-# trinton.make_music(
-#     lambda _: trinton.select_target(_, (1,)),
-#     trinton.attachment_command(
-#         attachments=[
-#             abjad.LilyPondLiteral(
-#                 r"\once \override Score.NonMusicalPaperColumn.line-break-system-details = #'((alignment-distances . (1 30 33 26.5)))",
-#                 site="absolute_before",
-#             ),
-#         ],
-#         selector=trinton.select_leaves_by_index([0]),
-#         tag=abjad.Tag("+SCORE"),
-#     ),
-#     voice=score["Global Context"],
-# )
-#
+# spacing
+
+trinton.make_music(
+    lambda _: trinton.select_target(_, (1,)),
+    trinton.attachment_command(
+        attachments=[
+            abjad.LilyPondLiteral(
+                r"\once \override Score.NonMusicalPaperColumn.line-break-system-details = #'((alignment-distances . (15)))",
+                site="absolute_before",
+            ),
+        ],
+        selector=trinton.select_leaves_by_index([0]),
+        tag=abjad.Tag("+SCORE"),
+    ),
+    voice=score["Global Context"],
+)
+
 # trinton.make_music(
 #     lambda _: trinton.select_target(_, (4,)),
 #     trinton.attachment_command(
@@ -176,7 +245,7 @@ trinton.render_file(
     build_path="/Users/trintonprater/scores/dur_e_dast/dur_e_dast/build",
     segment_name="_ghost",
     includes=[
-        "/Users/trintonprater/scores/dur_e_dast/dur_e_dast/build/dur-e-dast-stylesheet.ily",
+        "/Users/trintonprater/scores/dur_e_dast/dur_e_dast/build/section-stylesheet.ily",
         "/Users/trintonprater/abjad/abjad/scm/abjad.ily",
     ],
 )

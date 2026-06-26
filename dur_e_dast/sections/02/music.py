@@ -20,84 +20,147 @@ ts.write_groupings(
 
 # structure
 
-library.illustrate_structure(
-    score=score,
-    voice_names=["percussion 1 voice", "percussion 2 voice"],
-    line_groups=material_sequence.line_groupings[1],
-    material_sequence=material_sequence.material_sequence[2:7],
-)
-
-library.illustrate_pitch_structure(
-    score=score,
-    voice_names=["percussion 1 voice", "percussion 2 voice"],
-    measure_groupings=trinton.rotated_sequence(
-        material_sequence.pitch_groupings, 3 % len(material_sequence.pitch_groupings)
-    ),
-    pitch_sequence=trinton.rotated_sequence(
-        material_sequence.pitch_sequence, 3 % len(material_sequence.pitch_sequence)
-    ),
-    measure_limit=67,
-)
-
-library.illustrate_pitch_structure(
-    score=score,
-    voice_names=["percussion 1 voice", "percussion 2 voice"],
-    measure_groupings=trinton.rotated_sequence(
-        material_sequence.implement_groupings,
-        3 % len(material_sequence.implement_groupings),
-    ),
-    pitch_sequence=trinton.rotated_sequence(
-        material_sequence.implement_sequence,
-        3 % len(material_sequence.implement_sequence),
-    ),
-    measure_limit=67,
-    material_markup="I",
-)
+# library.illustrate_structure(
+#     score=score,
+#     voice_names=["percussion 1 voice", "percussion 2 voice"],
+#     line_groups=material_sequence.line_groupings[1],
+#     material_sequence=material_sequence.material_sequence[2:7],
+# )
+#
+# library.illustrate_pitch_structure(
+#     score=score,
+#     voice_names=["percussion 1 voice", "percussion 2 voice"],
+#     measure_groupings=trinton.rotated_sequence(
+#         material_sequence.pitch_groupings, 3 % len(material_sequence.pitch_groupings)
+#     ),
+#     pitch_sequence=trinton.rotated_sequence(
+#         material_sequence.pitch_sequence, 3 % len(material_sequence.pitch_sequence)
+#     ),
+#     measure_limit=67,
+# )
+#
+# library.illustrate_pitch_structure(
+#     score=score,
+#     voice_names=["percussion 1 voice", "percussion 2 voice"],
+#     measure_groupings=trinton.rotated_sequence(
+#         material_sequence.implement_groupings,
+#         3 % len(material_sequence.implement_groupings),
+#     ),
+#     pitch_sequence=trinton.rotated_sequence(
+#         material_sequence.implement_sequence,
+#         3 % len(material_sequence.implement_sequence),
+#     ),
+#     measure_limit=67,
+#     material_markup="I",
+# )
 
 # music
 
-# rhythm.rhythm_b(
-#     score=score,
-#     voice_name="percussion 1 voice",
-#     measures=(1, 17),
-#     index=3,
-#     extra_voice="1",
-#     preprocessor=trinton.fuse_quarters_preprocessor((4, 9, 4)),
-# )
-#
-# trinton.make_music(
-#     lambda _: trinton.select_target(_, (1, 17)),
-#     evans.PitchHandler(["f'"]),
-#     library.erase_ties(),
-#     trinton.duration_line(selector=trinton.logical_ties(pitched=True, grace=False)),
-#     voice=score["percussion 1 voice temp 1"]
-# )
-#
-# trinton.make_music(
-#     lambda _: trinton.select_target(_, (1, 17)),
-#     evans.PitchHandler(["g"]),
-#     library.erase_ties(),
-#     trinton.duration_line(selector=trinton.logical_ties(pitched=True, grace=False)),
-#     voice=score["percussion 1 voice polyrhythm 1"]
-# )
-#
-# trinton.make_music(
-#     lambda _: trinton.select_target(_, (18, 42)),
-#     evans.RhythmHandler(
-#         rhythm.rhythm_c(
-#             index=0,
-#             nesting_level=1,
-#             nesting_selector=trinton.patterned_tie_index_selector(
-#                 [1, 3, 4], 7, pitched=True, grace=False
-#             ),
-#         )
-#     ),
-#     evans.PitchHandler(["b"]),
-#     library.erase_ties(),
-#     # trinton.duration_line(selector=trinton.logical_ties(pitched=True, grace=False)),
-#     voice=score["percussion 1 voice"],
-#     preprocessor=trinton.fuse_preprocessor((9, 7, 9)),
-# )
+rhythm.rhythm_b(
+    score=score,
+    voice_name="percussion 1 voice",
+    measures=(1, 17),
+    index=9,
+    extra_voice="1",
+    preprocessor=trinton.fuse_quarters_preprocessor((4, 9, 4)),
+)
+
+trinton.make_music(
+    lambda _: trinton.select_target(_, (1, 17)),
+    evans.PitchHandler(["a'"]),
+    voice=score["percussion 1 voice temp 1"],
+)
+
+trinton.make_music(
+    lambda _: trinton.select_target(_, (1, 17)),
+    evans.PitchHandler(["e"]),
+    voice=score["percussion 1 voice polyrhythm 1"],
+)
+
+rhythm.rhythm_b(
+    score=score,
+    voice_name="percussion 2 voice",
+    measures=(18, 33),
+    index=30,
+    extra_voice="1",
+    preprocessor=trinton.fuse_quarters_preprocessor((4, 5, 3, 4)),
+)
+
+trinton.make_music(
+    lambda _: trinton.select_target(_, (18, 33)),
+    evans.PitchHandler(["a'"]),
+    voice=score["percussion 2 voice temp 1"],
+)
+
+trinton.make_music(
+    lambda _: trinton.select_target(_, (18, 33)),
+    evans.PitchHandler(["e"]),
+    voice=score["percussion 2 voice polyrhythm 1"],
+)
+
+trinton.make_music(
+    lambda _: trinton.select_target(_, (18, 42)),
+    evans.RhythmHandler(
+        rhythm.rhythm_c(
+            index=1, nesting_level=None, nesting_selector=None, duration_filter=True
+        ),
+    ),
+    library.erase_ties(),
+    voice=score["percussion 1 voice"],
+    preprocessor=trinton.fuse_preprocessor((4, 5, 3, 4, 2, 7)),
+)
+
+rhythm.rhythm_b(
+    score=score,
+    voice_name="percussion 2 voice",
+    measures=(43, 55),
+    index=33,
+    extra_voice="2",
+    preprocessor=trinton.fuse_quarters_preprocessor((3, 4, 3, 3, 3)),
+)
+
+trinton.make_music(
+    lambda _: trinton.select_target(_, (43, 55)),
+    evans.PitchHandler(["a'"]),
+    voice=score["percussion 2 voice temp 2"],
+)
+
+trinton.make_music(
+    lambda _: trinton.select_target(_, (43, 55)),
+    evans.PitchHandler(["e"]),
+    voice=score["percussion 2 voice polyrhythm 2"],
+)
+
+trinton.make_music(
+    lambda _: trinton.select_target(_, (43, 55)),
+    evans.RhythmHandler(rhythm.rhythm_a(index=9, alpha=1, multiply=False)),
+    library.erase_ties(),
+    voice=score["percussion 1 voice"],
+    preprocessor=trinton.fuse_preprocessor((3, 4, 3, 3, 3)),
+)
+
+trinton.make_music(
+    lambda _: trinton.select_target(_, (56, 67)),
+    evans.RhythmHandler(
+        rhythm.rhythm_c(
+            index=7,
+            nesting_level=1,
+            nesting_selector=trinton.select_logical_ties_by_index(
+                [6, 7, 9], pitched=True, grace=False
+            ),
+            duration_filter=False,
+        ),
+    ),
+    library.erase_ties(),
+    trinton.attachment_command(
+        attachments=[abjad.Articulation(">")],
+        selector=trinton.select_logical_ties_by_index(
+            [0, 1, 2, 3, -10, -6, -5, -1], first=True, pitched=True, grace=False
+        ),
+    ),
+    voice=score["percussion 1 voice"],
+    preprocessor=trinton.fuse_preprocessor((3, 6, 3)),
+)
 
 # globals
 
@@ -392,7 +455,7 @@ trinton.render_file(
     build_path="/Users/trintonprater/scores/dur_e_dast/dur_e_dast/build",
     segment_name="02",
     includes=[
-        "/Users/trintonprater/scores/dur_e_dast/dur_e_dast/build/dur-e-dast-stylesheet.ily",
+        "/Users/trintonprater/scores/dur_e_dast/dur_e_dast/build/section-stylesheet.ily",
         "/Users/trintonprater/abjad/abjad/scm/abjad.ily",
     ],
 )

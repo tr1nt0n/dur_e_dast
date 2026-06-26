@@ -173,7 +173,7 @@ def rhythm_b(
     )
 
 
-def rhythm_c(index, nesting_level=None, nesting_selector=None):
+def rhythm_c(index, nesting_level=None, nesting_selector=None, duration_filter=True):
     def return_rhythms(durations):
         integer_sequence = abjad.sequence.flatten(ts.all_groupings)
         integer_sequence = trinton.rotated_sequence(
@@ -217,7 +217,10 @@ def rhythm_c(index, nesting_level=None, nesting_selector=None):
                 relevant_ties = nesting_selector(container)
                 for tie, sub_ratio in zip(relevant_ties, itertools.cycle(sub_ratios)):
                     tie_duration = abjad.get.duration(tie, preprolated=True)
-                    if tie_duration < abjad.Duration((1, 2)):
+                    if (
+                        tie_duration < abjad.Duration((1, 2))
+                        and duration_filter is True
+                    ):
                         pass
                     else:
                         tuplet = rmakers.tuplet([tie_duration], [sub_ratio])

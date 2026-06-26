@@ -358,7 +358,7 @@ trinton.render_file(
     build_path="/Users/trintonprater/scores/dur_e_dast/dur_e_dast/build",
     segment_name="03",
     includes=[
-        "/Users/trintonprater/scores/dur_e_dast/dur_e_dast/build/dur-e-dast-stylesheet.ily",
+        "/Users/trintonprater/scores/dur_e_dast/dur_e_dast/build/section-stylesheet.ily",
         "/Users/trintonprater/abjad/abjad/scm/abjad.ily",
     ],
 )

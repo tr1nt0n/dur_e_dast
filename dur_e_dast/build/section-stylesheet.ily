@@ -10,12 +10,12 @@
 \include "/Users/trintonprater/trinton/lilypond/trinton-spanners.ily"
 \include "/Users/trintonprater/abjad-ext-microtones/abjadext/microtones/lilypond/ekmelos-ji-accidental-markups.ily"
 
-\header {
-    dedication = \markup \column {\line \override #'(font-name . "Bodoni72 Book Italic") { \fontsize #2 { "to" \override #'(font-name . "Bodoni72 Book") "Miedya" } \line { \fontsize #0.01 \with-color #white "."} } }
-    title = \markup \override #'(font-name . "Bodoni72 Book Italic") \center-column { \line \fontsize #14 { "dūr-e-dest | du redest" } \fontsize #0.01 \with-color #white "."}
-    subtitle = \markup \fontsize #2 \center-column { \line { \override #'(font-name . "Bodoni72 Book Italic") { "( three seats )" } } \fontsize #0.01 \with-color #white "."}
-    composer = \markup \column { \override #'(font-name . "Bodoni72") \fontsize #2 {"Trinity Hlynn Prater (*2000)"}}
-}
+% \header {
+%     dedication = \markup \column {\line \override #'(font-name . "Bodoni72 Book Italic") { \fontsize #2 { "to" \override #'(font-name . "Bodoni72 Book") "Miedya" } \line { \fontsize #0.01 \with-color #white "."} } }
+%     title = \markup \override #'(font-name . "Bodoni72 Book Italic") \center-column { \line \fontsize #14 { "dūr-e-dest | du redest" } \fontsize #0.01 \with-color #white "."}
+%     subtitle = \markup \fontsize #2 \center-column { \line { \override #'(font-name . "Bodoni72 Book Italic") { "( three seats )" } } \fontsize #0.01 \with-color #white "."}
+%     composer = \markup \column { \override #'(font-name . "Bodoni72") \fontsize #2 {"Trinity Hlynn Prater (*2000)"}}
+% }
 
 afterGraceFraction = #(cons 15 16)
 
