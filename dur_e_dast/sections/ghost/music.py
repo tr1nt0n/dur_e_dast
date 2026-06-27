@@ -23,8 +23,8 @@ trinton.make_music(
     trinton.hooked_spanner_command(
         string=trinton.boxed_markup(
             string=[
-                r"Bow large gong on top of lowest skin drum,",
-                r"gradually moving the gong from the rim to",
+                r"Bow medium tam tam on top of lowest skin drum,",
+                r"gradually moving the tam tam from the rim to",
                 r"the center of the drum.",
             ],
             column="\column",

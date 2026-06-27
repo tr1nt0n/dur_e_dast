@@ -56,6 +56,8 @@ ts.write_groupings(
 
 # music
 
+# rhythm
+
 rhythm.rhythm_b(
     score=score,
     voice_name="percussion 1 voice",
@@ -153,13 +155,378 @@ trinton.make_music(
     ),
     library.erase_ties(),
     trinton.attachment_command(
-        attachments=[abjad.Articulation(">")],
+        attachments=[
+            abjad.bundle(
+                abjad.Articulation(">"), abjad.Tweak(r"- \tweak X-extent ##f")
+            ),
+        ],
         selector=trinton.select_logical_ties_by_index(
             [0, 1, 2, 3, -10, -6, -5, -1], first=True, pitched=True, grace=False
         ),
     ),
     voice=score["percussion 1 voice"],
     preprocessor=trinton.fuse_preprocessor((3, 6, 3)),
+)
+
+# pitch
+
+trinton.make_music(
+    lambda _: trinton.select_target(_, (1, 5)),
+    pitch.pitch_b(index=28, selector=trinton.logical_ties(pitched=True, grace=False)),
+    trinton.duration_line(
+        selector=trinton.select_logical_ties_by_index([0, 1, 4]),
+    ),
+    trinton.attachment_command(
+        attachments=[abjad.Articulation("stopped")],
+        selector=trinton.select_logical_ties_by_index([2, 3], first=True, grace=False),
+        direction=abjad.DOWN,
+    ),
+    trinton.attachment_command(
+        attachments=[abjad.Dynamic("mp")], selector=trinton.select_leaves_by_index([0])
+    ),
+    trinton.attachment_command(
+        attachments=[
+            trinton.boxed_markup(
+                string=r"Styrofoam Blocks",
+                tweaks=[
+                    abjad.Tweak(r"- \tweak layer 100"),
+                    # abjad.Tweak(r"- \tweak padding 3")
+                ],
+                column="\center-column",
+                font_name="Bodoni72 Book",
+                fontsize=2,
+                string_only=False,
+            ),
+        ],
+        selector=trinton.select_leaves_by_index([0], grace=False),
+        direction=abjad.UP,
+    ),
+    voice=score["percussion 1 voice temp 1"],
+)
+
+trinton.make_music(
+    lambda _: trinton.select_target(_, (1, 5)),
+    pitch.pitch_b(index=33, selector=trinton.logical_ties(pitched=True, grace=False)),
+    trinton.duration_line(
+        selector=trinton.select_logical_ties_by_index([2]),
+    ),
+    trinton.attachment_command(
+        attachments=[abjad.Articulation("stopped")],
+        selector=trinton.select_logical_ties_by_index([0, 1], first=True, grace=False),
+    ),
+    voice=score["percussion 1 voice polyrhythm 1"],
+)
+
+trinton.make_music(
+    lambda _: trinton.select_target(_, (7,)),
+    pitch.pitch_c(
+        index=6,
+        voice_index=0,
+        selector=trinton.select_logical_ties_by_index([1], pitched=True, grace=False),
+    ),
+    trinton.attachment_command(
+        attachments=[abjad.Articulation("stopped")],
+        selector=trinton.select_logical_ties_by_index(
+            [1], pitched=True, first=True, grace=False
+        ),
+        direction=abjad.DOWN,
+    ),
+    trinton.linear_attachment_command(
+        attachments=[
+            abjad.Dynamic("f"),
+            abjad.StartHairpin(">o"),
+            abjad.StopHairpin(),
+            abjad.Dynamic("p"),
+        ],
+        selector=trinton.select_logical_ties_by_index(
+            [0, 0, 1, 2], first=True, pitched=True
+        ),
+    ),
+    # trinton.annotate_leaves_locally(
+    #     selector=trinton.logical_ties(pitched=True, grace=False, first=True),
+    #     direction=abjad.UP
+    # ),
+    voice=score["percussion 1 voice temp 1"],
+)
+
+trinton.make_music(
+    lambda _: trinton.select_target(_, (7,)),
+    pitch.pitch_c(
+        index=6,
+        voice_index=1,
+        selector=trinton.select_logical_ties_by_index([1], pitched=True, grace=False),
+    ),
+    # trinton.attachment_command(
+    #     attachments=[
+    #         abjad.Articulation("stopped")
+    #     ],
+    #     selector=trinton.select_logical_ties_by_index([1], pitched=True, first=True, grace=False),
+    #     direction=abjad.UP
+    # ),
+    trinton.duration_line(
+        selector=trinton.select_logical_ties_by_index(
+            [1], pitched=True, first=True, grace=False
+        )
+    ),
+    # trinton.annotate_leaves_locally(
+    #     selector=trinton.logical_ties(pitched=True, first=True),
+    #     direction=abjad.UP
+    # ),
+    voice=score["percussion 1 voice polyrhythm 1"],
+)
+
+trinton.make_music(
+    lambda _: trinton.select_target(_, (9, 12)),
+    pitch.pitch_b(
+        index=6,
+        selector=trinton.select_logical_ties_by_index(
+            [2, 3], pitched=True, grace=False
+        ),
+    ),
+    trinton.duration_line(
+        selector=trinton.select_logical_ties_by_index([3], pitched=True, grace=False),
+    ),
+    trinton.attachment_command(
+        attachments=[abjad.Articulation("stopped")],
+        selector=trinton.select_logical_ties_by_index(
+            [2], pitched=True, first=True, grace=False
+        ),
+        direction=abjad.DOWN,
+    ),
+    # trinton.annotate_leaves_locally(
+    #     selector=trinton.logical_ties(
+    #         first=True,
+    #         pitched=True,
+    #         grace=False
+    #     ),
+    #     direction=abjad.DOWN
+    # ),
+    voice=score["percussion 1 voice temp 1"],
+)
+
+trinton.make_music(
+    lambda _: trinton.select_target(_, (9, 12)),
+    pitch.pitch_b(
+        index=6,
+        selector=trinton.select_logical_ties_by_index([3], pitched=True, grace=False),
+    ),
+    trinton.duration_line(
+        selector=trinton.select_logical_ties_by_index([2], pitched=True, grace=False),
+    ),
+    trinton.attachment_command(
+        attachments=[abjad.Articulation("stopped")],
+        selector=trinton.select_logical_ties_by_index(
+            [3], pitched=True, first=True, grace=False
+        ),
+        direction=abjad.DOWN,
+    ),
+    # trinton.annotate_leaves_locally(
+    #     selector=trinton.logical_ties(
+    #         first=True,
+    #         pitched=True,
+    #         grace=False
+    #     ),
+    #     direction=abjad.UP
+    # ),
+    voice=score["percussion 1 voice polyrhythm 1"],
+)
+
+trinton.make_music(
+    lambda _: trinton.select_target(_, (14, 17)),
+    pitch.pitch_a(index=36, selector=trinton.logical_ties(pitched=True, grace=False)),
+    # trinton.annotate_leaves_locally(
+    #     selector=trinton.logical_ties(
+    #         first=True,
+    #         pitched=True,
+    #         grace=False
+    #     ),
+    #     direction=abjad.DOWN
+    # ),
+    trinton.duration_line(
+        selector=trinton.select_logical_ties_by_index([4], pitched=True, grace=False)
+    ),
+    trinton.attachment_command(
+        attachments=[abjad.Articulation("stopped")],
+        selector=trinton.select_logical_ties_by_index(
+            [0, 1, 2, 3], pitched=True, first=True, grace=False
+        ),
+        direction=abjad.DOWN,
+    ),
+    voice=score["percussion 1 voice temp 1"],
+)
+
+trinton.make_music(
+    lambda _: trinton.select_target(_, (14, 17)),
+    pitch.pitch_a(index=41, selector=trinton.logical_ties(pitched=True, grace=False)),
+    trinton.duration_line(
+        selector=trinton.select_logical_ties_by_index([0, 1], pitched=True, grace=False)
+    ),
+    # trinton.annotate_leaves_locally(
+    #     selector=trinton.logical_ties(
+    #         first=True,
+    #         pitched=True,
+    #         grace=False
+    #     ),
+    #     direction=abjad.UP
+    # ),
+    trinton.attachment_command(
+        attachments=[abjad.Articulation("stopped")],
+        selector=trinton.select_logical_ties_by_index(
+            [2, 3], pitched=True, first=True, grace=False
+        ),
+        direction=abjad.DOWN,
+    ),
+    trinton.linear_attachment_command(
+        attachments=[abjad.StartHairpin(">"), abjad.Dynamic("pp")],
+        selector=trinton.select_logical_ties_by_index(
+            [0, 2], first=True, pitched=True, grace=False
+        ),
+    ),
+    voice=score["percussion 1 voice polyrhythm 1"],
+)
+
+trinton.make_music(
+    lambda _: trinton.select_target(_, (18, 26)),
+    pitch.pitch_a(index=42, selector=trinton.logical_ties(pitched=True, grace=False)),
+    library.attach_pitch_a_tenuti(index=42),
+    trinton.attachment_command(
+        attachments=[
+            trinton.boxed_markup(
+                string=r"Scrubbing Brush",
+                tweaks=[
+                    abjad.Tweak(r"- \tweak layer 100"),
+                    # abjad.Tweak(r"- \tweak padding 3"),
+                ],
+                column="\center-column",
+                font_name="Bodoni72 Book",
+                fontsize=2,
+                string_only=False,
+            ),
+        ],
+        selector=trinton.select_leaves_by_index([0], grace=False),
+        direction=abjad.UP,
+    ),
+    trinton.duration_line(selector=trinton.logical_ties(pitched=True, grace=False)),
+    trinton.linear_attachment_command(
+        attachments=[abjad.Dynamic("mp"), abjad.Dynamic("p")],
+        selector=trinton.select_logical_ties_by_index(
+            [0, 1], pitched=True, first=True, grace=False
+        ),
+    ),
+    voice=score["percussion 1 voice"],
+)
+
+trinton.make_music(
+    lambda _: trinton.select_target(_, (27, 42)),
+    pitch.pitch_b(index=54, selector=trinton.logical_ties(pitched=True, grace=False)),
+    trinton.duration_line(selector=trinton.logical_ties(pitched=True, grace=False)),
+    # trinton.annotate_leaves_locally(
+    #     selector=trinton.logical_ties(first=True, pitched=True, grace=False)
+    # ),
+    trinton.attachment_command(
+        attachments=[
+            trinton.boxed_markup(
+                string=r"Styrofoam Blocks",
+                tweaks=[
+                    abjad.Tweak(r"- \tweak layer 100"),
+                    # abjad.Tweak(r"- \tweak padding 3")
+                ],
+                column="\center-column",
+                font_name="Bodoni72 Book",
+                fontsize=2,
+                string_only=False,
+            ),
+        ],
+        selector=trinton.select_logical_ties_by_index(
+            [15], first=True, pitched=True, grace=False
+        ),
+        direction=abjad.UP,
+    ),
+    trinton.attachment_command(
+        attachments=[abjad.Dynamic('"f"')],
+        selector=trinton.select_logical_ties_by_index(
+            [15], first=True, pitched=True, grace=False
+        ),
+    ),
+    voice=score["percussion 1 voice"],
+)
+
+trinton.make_music(
+    lambda _: trinton.select_target(_, (16,)),
+    trinton.attachment_command(
+        attachments=[
+            trinton.boxed_markup(
+                string=r"Drum Brushes (2 in one hand)",
+                tweaks=[
+                    abjad.Tweak(r"- \tweak layer 100"),
+                    # abjad.Tweak(r"- \tweak padding 3"),
+                ],
+                column="\center-column",
+                font_name="Bodoni72 Book",
+                fontsize=2,
+                string_only=False,
+            ),
+        ],
+        selector=trinton.select_leaves_by_index([0], grace=False),
+        direction=abjad.UP,
+    ),
+    voice=score["percussion 2 voice"],
+)
+
+trinton.make_music(
+    lambda _: trinton.select_target(_, (18, 26)),
+    pitch.pitch_c(
+        index=15,
+        voice_index=0,
+        selector=trinton.logical_ties(pitched=True, grace=False),
+    ),
+    voice=score["percussion 2 voice temp 1"],
+)
+
+trinton.make_music(
+    lambda _: trinton.select_target(_, (18, 26)),
+    pitch.pitch_c(
+        index=15,
+        voice_index=1,
+        selector=trinton.logical_ties(pitched=True, grace=False),
+    ),
+    voice=score["percussion 2 voice polyrhythm 1"],
+)
+
+trinton.make_music(
+    lambda _: trinton.select_target(_, (27, 29)),
+    pitch.pitch_b(index=40, selector=trinton.logical_ties(pitched=True, grace=False)),
+    voice=score["percussion 2 voice temp 1"],
+)
+
+trinton.make_music(
+    lambda _: trinton.select_target(_, (27, 29)),
+    pitch.pitch_b(index=37, selector=trinton.logical_ties(pitched=True, grace=False)),
+    voice=score["percussion 2 voice polyrhythm 1"],
+)
+
+trinton.make_music(
+    lambda _: trinton.select_target(_, (30, 33)),
+    pitch.pitch_a(index=0, selector=trinton.logical_ties(pitched=True, grace=False)),
+    trinton.duration_line(selector=trinton.logical_ties(pitched=True, grace=False)),
+    trinton.attachment_command(
+        attachments=[abjad.Articulation("tenuto")],
+        selector=trinton.select_leaves_by_index([0], pitched=True, grace=False),
+        direction=abjad.UP,
+    ),
+    voice=score["percussion 2 voice temp 1"],
+)
+
+trinton.make_music(
+    lambda _: trinton.select_target(_, (30, 33)),
+    pitch.pitch_a(index=5, selector=trinton.logical_ties(pitched=True, grace=False)),
+    trinton.duration_line(selector=trinton.logical_ties(pitched=True, grace=False)),
+    trinton.attachment_command(
+        attachments=[abjad.Articulation("tenuto")],
+        selector=trinton.select_leaves_by_index([0], pitched=True, grace=False),
+        direction=abjad.DOWN,
+    ),
+    voice=score["percussion 2 voice polyrhythm 1"],
 )
 
 # globals
