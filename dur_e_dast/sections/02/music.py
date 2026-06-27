@@ -442,10 +442,10 @@ trinton.make_music(
         ),
         direction=abjad.UP,
     ),
-    trinton.attachment_command(
-        attachments=[abjad.Dynamic('"f"')],
+    trinton.linear_attachment_command(
+        attachments=[abjad.Dynamic("mp"), abjad.Dynamic('"f"')],
         selector=trinton.select_logical_ties_by_index(
-            [15], first=True, pitched=True, grace=False
+            [0, 15], first=True, pitched=True, grace=False
         ),
     ),
     voice=score["percussion 1 voice"],

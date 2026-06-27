@@ -852,6 +852,7 @@
                             \once \override Dots.staff-position = #2
                             \afterGrace
                             b8
+                            \mp
                               %! abjad.glissando(7)
                             - \abjad-zero-padding-glissando
                               %! abjad.glissando(7)
