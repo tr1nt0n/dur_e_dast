@@ -39,6 +39,7 @@
             \break
             \once \override Score.BarLine.extra-offset = #'(0 . 0)
             \once \override Score.SpanBar.extra-offset = #'(0 . 0)
+              %! +SCORE
             \noPageBreak
               %! +SCORE
             \once \override Score.NonMusicalPaperColumn.line-break-system-details = #'((alignment-distances . (8.5 19)))
@@ -78,7 +79,8 @@
             \break
             \once \override Score.BarLine.extra-offset = #'(0 . 0)
             \once \override Score.SpanBar.extra-offset = #'(0 . 0)
-            \noPageBreak
+              %! +SCORE
+            \pageBreak
               %! +SCORE
             \once \override Score.NonMusicalPaperColumn.line-break-system-details = #'((alignment-distances . (3.5 12.5)))
             \time 1/4
@@ -120,6 +122,8 @@
             \once \override Score.BarLine.extra-offset = #'(0 . 0)
             \once \override Score.SpanBar.extra-offset = #'(0 . 0)
               %! +SCORE
+            \noPageBreak
+              %! +SCORE
             \once \override Score.NonMusicalPaperColumn.line-break-system-details = #'((alignment-distances . (5 13)))
             \time 1/4
             s1 * 1/4
@@ -157,6 +161,8 @@
             \break
             \once \override Score.BarLine.extra-offset = #'(0 . 0)
             \once \override Score.SpanBar.extra-offset = #'(0 . 0)
+              %! +SCORE
+            \noPageBreak
               %! +SCORE
             \once \override Score.NonMusicalPaperColumn.line-break-system-details = #'((alignment-distances . (6 17)))
             \time 1/4
@@ -198,6 +204,8 @@
             \once \override Score.BarLine.extra-offset = #'(0 . 0)
             \once \override Score.SpanBar.extra-offset = #'(0 . 0)
               %! +SCORE
+            \pageBreak
+              %! +SCORE
             \once \override Score.NonMusicalPaperColumn.line-break-system-details = #'((alignment-distances . (12 17)))
             \time 1/4
             s1 * 1/4
@@ -238,7 +246,9 @@
             \once \override Score.BarLine.extra-offset = #'(0 . 0)
             \once \override Score.SpanBar.extra-offset = #'(0 . 0)
               %! +SCORE
-            \once \override Score.NonMusicalPaperColumn.line-break-system-details = #'((alignment-distances . (12)))
+            \noPageBreak
+              %! +SCORE
+            \once \override Score.NonMusicalPaperColumn.line-break-system-details = #'((alignment-distances . (12 19)))
             \time 1/4
             s1 * 1/4
             \noBreak
@@ -2599,7 +2609,7 @@
                         s1 * 1/4
                         s1 * 1/4
                         - \tweak layer 100
-                        ^ \markup \override #'(font-name . " Bodoni72 Book ") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #2 \box \line { Drum Brushes (2 in one hand) }
+                        ^ \markup \override #'(font-name . " Bodoni72 Book ") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #2 \box \line { Drum Brushes (two in one hand) }
                         s1 * 1/4
                         <<
                             \context Voice = "percussion 2 voice temp 1"
@@ -2855,7 +2865,7 @@
                         s1 * 1/4
                         s1 * 1/4
                         - \tweak layer 100
-                        ^ \markup \override #'(font-name . " Bodoni72 Book ") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #2 \box \line { Drum Brushes (2 in one hand) }
+                        ^ \markup \override #'(font-name . " Bodoni72 Book ") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #2 \box \line { Drum Brushes (two in one hand) }
                         s1 * 1/4
                         <<
                             \context Voice = "percussion 2 voice temp 2"
