@@ -12,7 +12,7 @@ from dur_e_dast import ts
 
 # score
 
-score = library.dur_e_dast_score([(1, 4) for _ in range(0, 15)])
+score = library.dur_e_dast_score([(1, 4) for _ in range(0, 16)])
 
 ts.write_groupings(
     score=score, global_context="Global Context", groupings=ts.section_4_groupings
@@ -20,50 +20,191 @@ ts.write_groupings(
 
 # structure
 
-library.illustrate_structure(
-    score=score,
-    voice_names=["percussion 1 voice", "percussion 2 voice"],
-    line_groups=material_sequence.line_groupings[3],
-    material_sequence=material_sequence.material_sequence[9:],
-)
-
-library.illustrate_pitch_structure(
-    score=score,
-    voice_names=["percussion 1 voice", "percussion 2 voice"],
-    measure_groupings=trinton.rotated_sequence(
-        material_sequence.pitch_groupings, 15 % len(material_sequence.pitch_groupings)
-    ),
-    pitch_sequence=trinton.rotated_sequence(
-        material_sequence.pitch_sequence, 15 % len(material_sequence.pitch_sequence)
-    ),
-    measure_limit=14,
-)
-
-library.illustrate_pitch_structure(
-    score=score,
-    voice_names=["percussion 1 voice", "percussion 2 voice"],
-    measure_groupings=trinton.rotated_sequence(
-        material_sequence.implement_groupings,
-        10 % len(material_sequence.implement_groupings),
-    ),
-    pitch_sequence=trinton.rotated_sequence(
-        material_sequence.implement_sequence,
-        10 % len(material_sequence.implement_sequence),
-    ),
-    measure_limit=14,
-    material_markup="I",
-)
+# library.illustrate_structure(
+#     score=score,
+#     voice_names=["percussion 1 voice", "percussion 2 voice"],
+#     line_groups=material_sequence.line_groupings[3],
+#     material_sequence=material_sequence.material_sequence[9:],
+# )
+#
+# library.illustrate_pitch_structure(
+#     score=score,
+#     voice_names=["percussion 1 voice", "percussion 2 voice"],
+#     measure_groupings=trinton.rotated_sequence(
+#         material_sequence.pitch_groupings, 15 % len(material_sequence.pitch_groupings)
+#     ),
+#     pitch_sequence=trinton.rotated_sequence(
+#         material_sequence.pitch_sequence, 15 % len(material_sequence.pitch_sequence)
+#     ),
+#     measure_limit=14,
+# )
+#
+# library.illustrate_pitch_structure(
+#     score=score,
+#     voice_names=["percussion 1 voice", "percussion 2 voice"],
+#     measure_groupings=trinton.rotated_sequence(
+#         material_sequence.implement_groupings,
+#         10 % len(material_sequence.implement_groupings),
+#     ),
+#     pitch_sequence=trinton.rotated_sequence(
+#         material_sequence.implement_sequence,
+#         10 % len(material_sequence.implement_sequence),
+#     ),
+#     measure_limit=14,
+#     material_markup="I",
+# )
 
 # music
 
-# trinton.make_music(
-#     lambda _: trinton.select_target(_, (1, 30)),
-#     evans.RhythmHandler(
-#         evans.tuplet([(1, 1, 1), (1, 1, 1, 1), (1, 1, 1, 1, 1), (1, 1, 1)])
-#     ),
-#     voice=score["percussion 1 voice"],
-#     # preprocessor=trinton.fuse_preprocessor((5, 4, 3, 1))
-# )
+# rhythm
+
+trinton.make_music(
+    lambda _: trinton.select_target(_, (1, 14)),
+    evans.RhythmHandler(
+        rhythm.rhythm_c(
+            index=17,
+            nesting_level=1,
+            nesting_selector=trinton.select_logical_ties_by_index(
+                [2, 5, 8], pitched=True, grace=False
+            ),
+            duration_filter=False,
+        )
+    ),
+    library.erase_ties(),
+    voice=score["percussion 1 voice"],
+    preprocessor=trinton.fuse_preprocessor((3, 4, 4, 3)),
+)
+
+# pitch
+
+trinton.make_music(
+    lambda _: trinton.select_target(_, (1, 3)),
+    pitch.pitch_a(index=14),
+    voice=score["percussion 1 voice"],
+)
+
+trinton.make_music(
+    lambda _: trinton.select_target(_, (4, 7)),
+    pitch.pitch_b(index=6),
+    voice=score["percussion 1 voice"],
+)
+
+trinton.make_music(
+    lambda _: trinton.select_target(_, (8, 11)),
+    pitch.pitch_a(index=21),
+    voice=score["percussion 1 voice"],
+)
+
+trinton.make_music(
+    lambda _: trinton.select_target(_, (12, 14)),
+    pitch.pitch_b(index=14),
+    voice=score["percussion 1 voice"],
+)
+
+trinton.make_music(
+    lambda _: trinton.select_target(_, (1, 15)),
+    trinton.IntermittentVoiceHandler(
+        evans.RhythmHandler(evans.talea([-31, 1000], 16)),
+        direction=abjad.UP,
+        voice_name=r"grass bundle voice",
+        temp_name=r"temp",
+        preprocessor=None,
+    ),
+    voice=score["percussion 1 voice"],
+)
+
+trinton.make_music(
+    lambda _: trinton.select_target(_, (1, 15)),
+    evans.PitchHandler(["d'''"]),
+    trinton.duration_line(selector=trinton.logical_ties(pitched=True, grace=False)),
+    trinton.attachment_command(
+        attachments=[abjad.Articulation("tremolo-articulation")],
+        selector=trinton.select_logical_ties_by_index(
+            [0], first=True, pitched=True, grace=False
+        ),
+        direction=abjad.UP,
+    ),
+    trinton.hooked_spanner_command(
+        string=r"""\markup { \hspace #-1 { "( shake grass bundle )" } }""",
+        selector=trinton.select_logical_ties_by_index(
+            [0, -1], pitched=True, first=True
+        ),
+        padding=10.5,
+        direction=None,
+        right_padding=1,
+        full_string=True,
+        style="dashed-line-with-hook",
+        hspace=None,
+        command="One",
+        tag=None,
+        tweaks=[
+            r"""- \tweak font-name "Bodoni72 Book Italic" """,
+            r"""- \tweak font-size 2""",
+        ],
+    ),
+    voice=score["grass bundle voice"],
+)
+
+trinton.make_music(
+    lambda _: trinton.select_target(_, (1, 14)),
+    # trinton.annotate_leaves_locally(
+    #     selector=trinton.logical_ties(first=True, pitched=True, grace=False)
+    # ),
+    trinton.duration_line(
+        selector=trinton.select_logical_ties_by_index(
+            [0, 6, 7, 13, 18, 21], pitched=True, grace=False
+        )
+    ),
+    trinton.attachment_command(
+        attachments=[
+            trinton.boxed_markup(
+                string=r"Drum Brushes",
+                tweaks=[
+                    abjad.Tweak(r"- \tweak layer 100"),
+                    abjad.Tweak(r"- \tweak padding 4"),
+                ],
+                column="\center-column",
+                font_name="Bodoni72 Book",
+                fontsize=2,
+                string_only=False,
+            ),
+        ],
+        selector=trinton.select_leaves_by_index([0], grace=False),
+        direction=abjad.UP,
+    ),
+    trinton.attachment_command(
+        attachments=[abjad.Articulation("tremolo-articulation")],
+        selector=trinton.select_logical_ties_by_index(
+            [13, 21], first=True, pitched=True, grace=False
+        ),
+        direction=abjad.UP,
+    ),
+    trinton.attachment_command(
+        attachments=[abjad.Dynamic("pp")],
+        selector=trinton.select_logical_ties_by_index(
+            [0], first=True, pitched=True, grace=False
+        ),
+    ),
+    trinton.hooked_spanner_command(
+        string=r"""\drum-rim""",
+        selector=trinton.select_logical_ties_by_index(
+            [0, -1], pitched=True, first=True
+        ),
+        padding=5,
+        direction=None,
+        right_padding=1,
+        full_string=True,
+        style="dashed-line-with-hook",
+        hspace=None,
+        command="One",
+        tag=None,
+        # tweaks=[
+        #     r"""- \tweak font-name "Bodoni72 Book Italic" """,
+        #     r"""- \tweak font-size 2""",
+        # ],
+    ),
+    voice=score["percussion 1 voice temp"],
+)
 
 # globals
 
@@ -72,11 +213,25 @@ library.illustrate_pitch_structure(
 trinton.fermata_measures(
     score=score,
     measures=[15],
-    fermata="extremely-long-fermata",
+    fermata="very-long-fermata",
     voice_names=["percussion 1 voice", "percussion 2 voice"],
     font_size=14,
     clef_whitespace=True,
     blank=False,
+    last_measure=False,
+    padding=-10,
+    # extra_offset=2.5,
+    tag=abjad.Tag("+SCORE"),
+)
+
+trinton.fermata_measures(
+    score=score,
+    measures=[16],
+    fermata="extremely-long-fermata",
+    voice_names=["percussion 1 voice", "percussion 2 voice"],
+    font_size=14,
+    clef_whitespace=True,
+    blank=True,
     last_measure=False,
     padding=-6,
     # extra_offset=2.5,
@@ -84,7 +239,7 @@ trinton.fermata_measures(
 )
 
 trinton.make_music(
-    lambda _: trinton.select_target(_, (15,)),
+    lambda _: trinton.select_target(_, (16,)),
     trinton.attachment_command(
         attachments=[
             abjad.LilyPondLiteral(
@@ -243,12 +398,12 @@ trinton.make_music(
 
 for voice_name in ["Global Context", "percussion 1 voice", "percussion 2 voice"]:
     trinton.make_music(
-        lambda _: trinton.select_target(_, (15,)),
+        lambda _: trinton.select_target(_, (16,)),
         trinton.attachment_command(
             attachments=[
                 abjad.LilyPondLiteral(
                     [
-                        r"""\once \override Staff.BarLine.glyph-name = "||" """,
+                        r"""\once \override Staff.BarLine.glyph-name = "|." """,
                     ],
                     site="absolute_after",
                 )
@@ -265,22 +420,37 @@ for voice_name in ["Global Context", "percussion 1 voice", "percussion 2 voice"]
 library.break_systems(score=score, global_context="Global Context", i_offset=130)
 
 # # spacing
-#
-# trinton.make_music(
-#     lambda _: trinton.select_target(_, (1,)),
-#     trinton.attachment_command(
-#         attachments=[
-#             abjad.LilyPondLiteral(
-#                 r"\once \override Score.NonMusicalPaperColumn.line-break-system-details = #'((alignment-distances . (1 30 33 26.5)))",
-#                 site="absolute_before",
-#             ),
-#         ],
-#         selector=trinton.select_leaves_by_index([0]),
-#         tag=abjad.Tag("+SCORE"),
-#     ),
-#     voice=score["Global Context"],
-# )
-#
+
+trinton.make_music(
+    lambda _: trinton.select_target(_, (1,)),
+    trinton.attachment_command(
+        attachments=[
+            abjad.LilyPondLiteral(
+                r"\once \override Score.NonMusicalPaperColumn.line-break-system-details = #'((alignment-distances . (12.5)))",
+                site="absolute_before",
+            ),
+        ],
+        selector=trinton.select_leaves_by_index([0]),
+        tag=abjad.Tag("+SCORE"),
+    ),
+    voice=score["Global Context"],
+)
+
+trinton.make_music(
+    lambda _: trinton.select_target(_, (11,)),
+    trinton.attachment_command(
+        attachments=[
+            abjad.LilyPondLiteral(
+                r"\once \override Score.NonMusicalPaperColumn.line-break-system-details = #'((alignment-distances . (11.5)))",
+                site="absolute_before",
+            ),
+        ],
+        selector=trinton.select_leaves_by_index([0]),
+        tag=abjad.Tag("+SCORE"),
+    ),
+    voice=score["Global Context"],
+)
+
 # trinton.make_music(
 #     lambda _: trinton.select_target(_, (4,)),
 #     trinton.attachment_command(
@@ -304,26 +474,26 @@ library.break_systems(score=score, global_context="Global Context", i_offset=130
 
 # colophon
 
-# trinton.make_music(
-#     lambda _: trinton.select_target(_, (16,)),
-#     trinton.attachment_command(
-#         attachments=[
-#             # abjad.LilyPondLiteral(
-#             #     r"\override Staff.TextScript.whiteout = ##f",
-#             #     site="before",
-#             # ),
-#             abjad.bundle(
-#                 abjad.Markup(
-#                     r"""\markup \fontsize #1 \lower #5 { \hspace #-1.75 \column \override #'(font-name . "Bodoni72 Book Italic") { \line { August - November 2025 } \line { Buffalo - Brooklyn, NY } } }"""
-#                 ),
-#                 r"- \tweak X-extent ##f",
-#             ),
-#         ],
-#         selector=trinton.select_leaves_by_index([0]),
-#         direction=abjad.DOWN,
-#     ),
-#     voice=score["cello 2 voice"],
-# )
+trinton.make_music(
+    lambda _: trinton.select_target(_, (16,)),
+    trinton.attachment_command(
+        attachments=[
+            # abjad.LilyPondLiteral(
+            #     r"\override Staff.TextScript.whiteout = ##f",
+            #     site="before",
+            # ),
+            abjad.bundle(
+                abjad.Markup(
+                    r"""\markup \fontsize #1 \lower #7 { \hspace #1.75 \right-column \override #'(font-name . "Bodoni72 Book Italic") { \line { June - August 2026 } \line { Schöppingen, DE - Ithaca, NY } } }"""
+                ),
+                r"- \tweak X-extent ##f",
+            ),
+        ],
+        selector=trinton.select_leaves_by_index([0]),
+        direction=abjad.DOWN,
+    ),
+    voice=score["percussion 1 voice"],
+)
 
 # trinton.make_music(
 #     lambda _: trinton.select_target(_, (15,)),
